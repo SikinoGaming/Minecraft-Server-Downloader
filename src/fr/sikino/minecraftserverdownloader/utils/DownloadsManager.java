@@ -1,0 +1,117 @@
+package fr.sikino.minecraftserverdownloader.utils;
+
+import fr.sikino.minecraftserverdownloader.scenes.MainController;
+import me.marnic.jdl.CombinedSpeedProgressDownloadHandler;
+import me.marnic.jdl.Downloader;
+import me.marnic.jdl.SizeUtil;
+
+public class DownloadsManager {
+	
+	MainController mainController = new MainController();
+	
+	private String setJarVersion() {
+		
+		String link = null;
+		
+		if (mainController.serverVersion.getValue() == "Vanilla") {
+			
+			if (mainController.minecraftVersion.getValue() == "1.17.1") {
+				link = "https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar";
+			}
+			else if (mainController.minecraftVersion.getValue() == "1.16.5") {
+				link = "https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar";
+			}
+			else if (mainController.minecraftVersion.getValue() == "1.15.2") {
+				link = "https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar";
+			}
+			else if (mainController.minecraftVersion.getValue() == "1.14.4") {
+				link = "https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar";
+			}
+			else if (mainController.minecraftVersion.getValue() == "1.13.2") {
+				link = "https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar";
+			}
+			else if (mainController.minecraftVersion.getValue() == "1.12.2") {
+				link = "https://launcher.mojang.com/v1/objects/886945bfb2b978778c3a0288fd7fab09d315b25f/server.jar";
+			}
+			else if (mainController.minecraftVersion.getValue() == "1.11.2") {
+				link = "https://launcher.mojang.com/v1/objects/f00c294a1576e03fddcac777c3cf4c7d404c4ba4/server.jar";
+			}
+			else if (mainController.minecraftVersion.getValue() == "1.10.2") {
+				link = "https://launcher.mojang.com/v1/objects/3d501b23df53c548254f5e3f66492d178a48db63/server.jar";
+			}
+			else if (mainController.minecraftVersion.getValue() == "1.9.4") {
+				link = "https://launcher.mojang.com/v1/objects/edbb7b1758af33d365bf835eb9d13de005b1e274/server.jar";
+			}
+			else if (mainController.minecraftVersion.getValue() == "1.8.9") {
+				link = "https://launcher.mojang.com/v1/objects/b58b2ceb36e01bcd8dbf49c8fb66c55a9f0676cd/server.jar";
+			}
+		}
+		return link;
+	}
+	
+	public void downloadFile() {
+		
+		String path = mainController.serverPath.getText();
+		String link = setJarVersion();
+		
+		if (!path.endsWith("/")) {
+			path = path + "/";
+		}
+		
+		System.out.println("------  Programme par Sikino  -------");
+		System.out.println(" --- Minecraft Server Downloader ---");
+		System.out.println("	Téléchargé à " + path);
+		System.out.println("	Téléchargé depuis " + link);
+		System.out.println("	Serveur sous " + mainController.serverVersion.getValue());
+		System.out.println("	Et en " + mainController.minecraftVersion.getValue());
+		
+		Downloader downloader = new Downloader(false);
+		
+		final String finalPATH = path;
+		
+        Thread downloadThread = new Thread( new Runnable() {
+            @Override
+            public void run() {
+            	downloader.downloadFileToLocation(link, finalPATH + "server.jar");
+            }
+        });
+		
+		downloader.setDownloadHandler(new CombinedSpeedProgressDownloadHandler(downloader) {
+            
+            @Override
+            public void onDownloadProgress(int downloaded,int maxDownload,int percent) {
+            	float flpercent = percent;
+            	mainController.percentText.setText(percent + "%");
+            	mainController.fileSize.setText((Math.round(SizeUtil.toMBFB(downloaded) * 100) / 100) + "/" + (Math.round(SizeUtil.toMBFB(maxDownload) * 100) / 100) + "Mo");
+            	mainController.progressBar.setProgress(flpercent / 100);
+            }
+            
+            @Override
+            public void onDownloadTickPerSec(int bytesPerSec) {
+            	mainController.downloadSpeed.setText((Math.round(SizeUtil.toMBFB(bytesPerSec) * 100) / 100) + " Mo/s");
+            }
+
+			@Override
+            public void onDownloadFinish() {
+                super.onDownloadFinish();
+            }
+            
+            @Override
+            public void onDownloadStart() {
+            	mainController.progressBar.setVisible(true);
+            	mainController.downloadSpeed.setVisible(true);
+            	mainController.percentText.setVisible(true);
+            	mainController.fileSize.setVisible(true);
+            	mainController.separator.setVisible(true);
+            }
+
+			@Override
+			public void onDownloadSpeedProgress(int downloaded, int maxDownload, int percent, int bytesPerSec) {
+				// Obligatoire
+			}
+        });
+		
+		downloadThread.start();
+	}
+
+}
