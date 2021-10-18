@@ -8,51 +8,53 @@ import me.marnic.jdl.SizeUtil;
 public class DownloadsManager {
 	
 	MainController mainController = new MainController();
+	String link;
+	String serverVersion;
+	String minecraftVersion;
 	
-	private String setJarVersion() {
+	public String setJarVersion(String serverVersion, String minecraftversion) {
 		
+		this.serverVersion = serverVersion;
+		this.minecraftVersion = minecraftversion;
 		String link = null;
 		
-		if (mainController.serverVersion.getValue() == "Vanilla") {
+		if (serverVersion == "Vanilla") {
 			
-			if (mainController.minecraftVersion.getValue() == "1.17.1") {
+			if (minecraftversion == "1.17.1") {
 				link = "https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar";
 			}
-			else if (mainController.minecraftVersion.getValue() == "1.16.5") {
+			else if (minecraftversion == "1.16.5") {
 				link = "https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar";
 			}
-			else if (mainController.minecraftVersion.getValue() == "1.15.2") {
+			else if (minecraftversion == "1.15.2") {
 				link = "https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar";
 			}
-			else if (mainController.minecraftVersion.getValue() == "1.14.4") {
+			else if (minecraftversion == "1.14.4") {
 				link = "https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar";
 			}
-			else if (mainController.minecraftVersion.getValue() == "1.13.2") {
+			else if (minecraftversion == "1.13.2") {
 				link = "https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar";
 			}
-			else if (mainController.minecraftVersion.getValue() == "1.12.2") {
+			else if (minecraftversion == "1.12.2") {
 				link = "https://launcher.mojang.com/v1/objects/886945bfb2b978778c3a0288fd7fab09d315b25f/server.jar";
 			}
-			else if (mainController.minecraftVersion.getValue() == "1.11.2") {
+			else if (minecraftversion == "1.11.2") {
 				link = "https://launcher.mojang.com/v1/objects/f00c294a1576e03fddcac777c3cf4c7d404c4ba4/server.jar";
 			}
-			else if (mainController.minecraftVersion.getValue() == "1.10.2") {
+			else if (minecraftversion == "1.10.2") {
 				link = "https://launcher.mojang.com/v1/objects/3d501b23df53c548254f5e3f66492d178a48db63/server.jar";
 			}
-			else if (mainController.minecraftVersion.getValue() == "1.9.4") {
+			else if (minecraftversion == "1.9.4") {
 				link = "https://launcher.mojang.com/v1/objects/edbb7b1758af33d365bf835eb9d13de005b1e274/server.jar";
 			}
-			else if (mainController.minecraftVersion.getValue() == "1.8.9") {
+			else if (minecraftversion == "1.8.9") {
 				link = "https://launcher.mojang.com/v1/objects/b58b2ceb36e01bcd8dbf49c8fb66c55a9f0676cd/server.jar";
 			}
 		}
-		return link;
+		return this.link = link;
 	}
 	
-	public void downloadFile() {
-		
-		String path = mainController.serverPath.getText();
-		String link = setJarVersion();
+	public void downloadFile(String path) {
 		
 		if (!path.endsWith("/")) {
 			path = path + "/";
@@ -62,8 +64,8 @@ public class DownloadsManager {
 		System.out.println(" --- Minecraft Server Downloader ---");
 		System.out.println("	Téléchargé à " + path);
 		System.out.println("	Téléchargé depuis " + link);
-		System.out.println("	Serveur sous " + mainController.serverVersion.getValue());
-		System.out.println("	Et en " + mainController.minecraftVersion.getValue());
+		System.out.println("	Serveur sous " + serverVersion);
+		System.out.println("	Et en " + minecraftVersion);
 		
 		Downloader downloader = new Downloader(false);
 		
@@ -98,11 +100,7 @@ public class DownloadsManager {
             
             @Override
             public void onDownloadStart() {
-            	mainController.progressBar.setVisible(true);
-            	mainController.downloadSpeed.setVisible(true);
-            	mainController.percentText.setVisible(true);
-            	mainController.fileSize.setVisible(true);
-            	mainController.separator.setVisible(true);
+            	//mainController.downloadStarted();
             }
 
 			@Override

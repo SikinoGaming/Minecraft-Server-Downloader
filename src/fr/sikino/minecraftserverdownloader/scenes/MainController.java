@@ -3,6 +3,7 @@ package fr.sikino.minecraftserverdownloader.scenes;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import fr.sikino.minecraftserverdownloader.utils.DownloadsManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -67,8 +68,17 @@ public class MainController implements Initializable{
 	}
 	
 	private void ok() {
-		
-		
+		DownloadsManager dm = new DownloadsManager();
+		dm.setJarVersion(serverVersion.getValue(), minecraftVersion.getValue());
+		dm.downloadFile(serverPath.getText());
+	}
+	
+	public void downloadStarted() {
+		progressBar.setVisible(true);
+    	downloadSpeed.setVisible(true);
+    	percentText.setVisible(true);
+    	fileSize.setVisible(true);
+    	separator.setVisible(true);
 	}
 	
 	private void wrong() {
