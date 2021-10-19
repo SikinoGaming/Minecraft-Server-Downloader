@@ -7,6 +7,8 @@
 # BlueJ files
 *.ctxt
 
+*.pyc
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -28,3 +30,10 @@ hs_err_pid*
 build/
 /.metadata/
 bin/
+.vscode/
+build/
+__pycache__/
+dist/
+server/
+cmd.txt
+
