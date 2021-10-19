@@ -96,6 +96,7 @@ public class DownloadsManager {
 			@Override
             public void onDownloadFinish() {
                 super.onDownloadFinish();
+                System.exit(0);
             }
             
             @Override
