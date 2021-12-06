@@ -40,4 +40,4 @@ cmd.txt
 # Eclipse files
 *.classpath
 *.project
-/.settings/
+.settings/
