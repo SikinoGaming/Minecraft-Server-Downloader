@@ -37,3 +37,7 @@ dist/
 server/
 cmd.txt
 
+# Eclipse files
+*.classpath
+*.project
+/.settings/

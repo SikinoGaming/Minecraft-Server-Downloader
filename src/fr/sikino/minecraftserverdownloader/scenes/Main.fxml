@@ -33,7 +33,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="serverPath" alignment="CENTER" layoutX="227.0" layoutY="276.0" text="D:/Projects/run" />
+      <TextField fx:id="serverPath" alignment="CENTER" layoutX="227.0" layoutY="276.0" text="D:\Projects\run" />
       <Button fx:id="download" contentDisplay="CENTER" layoutX="234.0" layoutY="329.0" mnemonicParsing="false" onAction="#download" text="Télécharger le serveur">
          <cursor>
             <Cursor fx:constant="HAND" />

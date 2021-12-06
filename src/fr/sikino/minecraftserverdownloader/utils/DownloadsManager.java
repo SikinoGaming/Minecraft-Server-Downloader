@@ -62,19 +62,23 @@ public class DownloadsManager {
 		
 		System.out.println("------  Programme par Sikino  -------");
 		System.out.println(" --- Minecraft Server Downloader ---");
-		System.out.println("	Téléchargé à " + path);
-		System.out.println("	Téléchargé depuis " + link);
-		System.out.println("	Serveur sous " + serverVersion);
-		System.out.println("	Et en " + minecraftVersion);
+		if (serverVersion == "Vanilla") {
+			System.out.println("Serveur en " + serverVersion);
+		} else {
+			System.out.println("Serveur sous " + serverVersion);
+		}
+		System.out.println("Et en " + minecraftVersion);
+		System.out.println("Téléchargé à " + path);
+		System.out.println("Téléchargé depuis " + link);
 		
 		Downloader downloader = new Downloader(false);
 		
-		final String finalPATH = path;
+		final String FINALPATH = path;
 		
-        Thread downloadThread = new Thread( new Runnable() {
+        Thread downloadThread = new Thread(new Runnable() {
             @Override
             public void run() {
-            	downloader.downloadFileToLocation(link, finalPATH + "server.jar");
+            	downloader.downloadFileToLocation(link, FINALPATH + "server.jar");
             }
         });
 		
@@ -95,13 +99,17 @@ public class DownloadsManager {
 
 			@Override
             public void onDownloadFinish() {
-                super.onDownloadFinish();
-                System.exit(0);
+				System.out.println("Download Finished");
+				System.exit(0);
             }
             
-            @Override
+			@Override
             public void onDownloadStart() {
-            	//mainController.downloadStarted();
+            	/*mainController.progressBar.setVisible(true);
+            	mainController.downloadSpeed.setVisible(true);
+            	mainController.percentText.setVisible(true);
+            	mainController.fileSize.setVisible(true);
+            	mainController.separator.setVisible(true);*/
             }
 
 			@Override
