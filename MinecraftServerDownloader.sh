@@ -41,5 +41,7 @@ fi
 echo "Téléchargement du serveur $type en $version"
 echo "Le lien est $link"
 echo  
+mkdir Minecraft-Server
+cd server
 wget $link
-mv server.jar "server-$version-$type.jar"
+mv server.jar "Server-$version-$type.jar"
