@@ -1,4 +1,4 @@
-package fr.sikino.minecraftserverdownloader.scenes;
+package fr.sikino.minecraftserverdownloader.windows.scenes;
 
 import java.net.URL;
 import java.util.ResourceBundle;

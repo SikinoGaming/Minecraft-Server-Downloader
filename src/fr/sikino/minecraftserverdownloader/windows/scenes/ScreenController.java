@@ -1,4 +1,4 @@
-package fr.sikino.minecraftserverdownloader.utils;
+package fr.sikino.minecraftserverdownloader.windows.scenes;
 
 import java.util.HashMap;
 

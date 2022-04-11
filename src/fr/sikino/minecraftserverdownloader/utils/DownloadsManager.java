@@ -1,9 +1,11 @@
 package fr.sikino.minecraftserverdownloader.utils;
 
-import fr.sikino.minecraftserverdownloader.scenes.MainController;
+import fr.sikino.minecraftserverdownloader.windows.scenes.MainController;
 import me.marnic.jdl.CombinedSpeedProgressDownloadHandler;
 import me.marnic.jdl.Downloader;
 import me.marnic.jdl.SizeUtil;
+import sun.awt.OSInfo;
+import sun.awt.OSInfo.OSType;
 
 public class DownloadsManager {
 	
@@ -14,13 +16,16 @@ public class DownloadsManager {
 	
 	public String setJarVersion(String serverVersion, String minecraftversion) {
 		
-		this.serverVersion = serverVersion;
+		this.serverVersion = serverVersion.toLowerCase();
 		this.minecraftVersion = minecraftversion;
 		String link = null;
 		
-		if (serverVersion == "Vanilla") {
+		if (serverVersion == "vanilla") {
 			
-			if (minecraftversion == "1.17.1") {
+			if (minecraftversion == "1.18.2") {
+				link = "https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar";
+			}
+			else if (minecraftversion == "1.17.1") {
 				link = "https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar";
 			}
 			else if (minecraftversion == "1.16.5") {
@@ -81,43 +86,76 @@ public class DownloadsManager {
             	downloader.downloadFileToLocation(link, FINALPATH + "server.jar");
             }
         });
-		
-		downloader.setDownloadHandler(new CombinedSpeedProgressDownloadHandler(downloader) {
-            
-            @Override
-            public void onDownloadProgress(int downloaded,int maxDownload,int percent) {
-            	float flpercent = percent;
-            	mainController.percentText.setText(percent + "%");
-            	mainController.fileSize.setText((Math.round(SizeUtil.toMBFB(downloaded) * 100) / 100) + "/" + (Math.round(SizeUtil.toMBFB(maxDownload) * 100) / 100) + "Mo");
-            	mainController.progressBar.setProgress(flpercent / 100);
-            }
-            
-            @Override
-            public void onDownloadTickPerSec(int bytesPerSec) {
-            	mainController.downloadSpeed.setText((Math.round(SizeUtil.toMBFB(bytesPerSec) * 100) / 100) + " Mo/s");
-            }
+        
+        if (OSInfo.getOSType() == OSType.WINDOWS) {
+        	
+        	downloader.setDownloadHandler(new CombinedSpeedProgressDownloadHandler(downloader) {
+    			
+                @Override
+                public void onDownloadProgress(int downloaded,int maxDownload,int percent) {
+                	float flpercent = percent;
+                	mainController.percentText.setText(percent + "%");
+                	mainController.fileSize.setText((Math.round(SizeUtil.toMBFB(downloaded) * 100) / 100) + "/" + (Math.round(SizeUtil.toMBFB(maxDownload) * 100) / 100) + "Mo");
+                	mainController.progressBar.setProgress(flpercent / 100);
+                }
+                
+                @Override
+                public void onDownloadTickPerSec(int bytesPerSec) {
+                	mainController.downloadSpeed.setText((Math.round(SizeUtil.toMBFB(bytesPerSec) * 100) / 100) + " Mo/s");
+                }
 
-			@Override
-            public void onDownloadFinish() {
-				System.out.println("Download Finished");
-				System.exit(0);
-            }
-            
-			@Override
-            public void onDownloadStart() {
-            	/*mainController.progressBar.setVisible(true);
-            	mainController.downloadSpeed.setVisible(true);
-            	mainController.percentText.setVisible(true);
-            	mainController.fileSize.setVisible(true);
-            	mainController.separator.setVisible(true);*/
-            }
+    			@Override
+                public void onDownloadFinish() {
+    				System.out.println("Download Finished");
+    				System.exit(0);
+                }
+                
+    			@Override
+                public void onDownloadStart() {
+                	/*mainController.progressBar.setVisible(true);
+                	mainController.downloadSpeed.setVisible(true);
+                	mainController.percentText.setVisible(true);
+                	mainController.fileSize.setVisible(true);
+                	mainController.separator.setVisible(true);*/
+                }
 
-			@Override
-			public void onDownloadSpeedProgress(int downloaded, int maxDownload, int percent, int bytesPerSec) {
-				// Obligatoire
-			}
-        });
-		
+    			@Override
+    			public void onDownloadSpeedProgress(int downloaded, int maxDownload, int percent, int bytesPerSec) {
+    				// Obligatoire
+    			}
+        	});
+        	
+        } else {
+			
+			downloader.setDownloadHandler(new CombinedSpeedProgressDownloadHandler(downloader) {
+    			
+                @Override
+                public void onDownloadProgress(int downloaded,int maxDownload,int percent) {
+                	System.out.println(SizeUtil.toMBFB(downloaded) + "Mb downloaded of " + maxDownload + ", " + percent);
+                }
+                
+                @Override
+                public void onDownloadTickPerSec(int bytesPerSec) {
+                	System.out.println((Math.round(SizeUtil.toMBFB(bytesPerSec) * 100) / 100) + " Mo/s");
+                }
+
+    			@Override
+                public void onDownloadFinish() {
+    				System.out.println("Download Finished");
+    				System.exit(0);
+                }
+                
+    			@Override
+                public void onDownloadStart() {
+                	System.out.println("Starting Download");
+                }
+
+    			@Override
+    			public void onDownloadSpeedProgress(int downloaded, int maxDownload, int percent, int bytesPerSec) {
+    				// Obligatoire
+    			}
+            });
+		}
 		downloadThread.start();
 	}
 

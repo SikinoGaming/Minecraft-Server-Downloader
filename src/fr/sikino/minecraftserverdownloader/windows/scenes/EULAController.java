@@ -1,4 +1,4 @@
-package fr.sikino.minecraftserverdownloader.scenes;
+package fr.sikino.minecraftserverdownloader.windows.scenes;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
