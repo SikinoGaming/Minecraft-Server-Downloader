@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#! /usr/bin/bash
 command -v wget
 if [$? = 1]; then sudo apt install wget -y; fi
 
@@ -12,18 +12,20 @@ echo "Merci d'écrire votre version ou votre type de serveur tel qu'ils sont mon
 echo
 
 echo "Quel est le type de serveur ?"
+echo 
 read type
 
 echo
 echo "Votre type de serveur est $type"
 echo "Les version de Minecraft disponibles sont :"
 echo "      1.8.9, 1.9.4, 1.10.2, 1.11.2, 1.12.2, 1.13.2, 1.14.4, 1.15.2, 1.16.5, 1.17.1 et 1.18.2"
+echo 
 
 echo Quel est la version de Minecraft ?
 read version
 echo  
 
-if [ "$type" = "vanilla" ] ; then
+if [ "$type" = "vanilla" ]; then
     if [ $version = "1.18.2" ]; then link="https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar"; fi
     if [ $version = "1.17.1" ]; then link="https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar"; fi
     if [ $version = "1.16.5" ]; then link="https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar"; fi
@@ -35,8 +37,13 @@ if [ "$type" = "vanilla" ] ; then
     if [ $version = "1.10.2" ]; then link="https://launcher.mojang.com/v1/objects/3d501b23df53c548254f5e3f66492d178a48db63/server.jar"; fi
     if [ $version = "1.9.4" ]; then link="https://launcher.mojang.com/v1/objects/edbb7b1758af33d365bf835eb9d13de005b1e274/server.jar"; fi
     if [ $version = "1.8.9" ]; then link="https://launcher.mojang.com/v1/objects/b58b2ceb36e01bcd8dbf49c8fb66c55a9f0676cd/server.jar"; fi
+    else
+        echo "Désolé, la version n'est pas encore disponible."
+        exit 0
+    fi
 else
     echo "Votre type de serveur est incorrect"
+    exit 0
 fi
 echo "Téléchargement du serveur $type en $version"
 echo "Le lien est $link"
@@ -44,4 +51,4 @@ echo
 mkdir Minecraft-Server
 cd server
 wget $link
-mv server.jar "Server-$version-$type.jar"
+mv server.jar "./Minecraft-Server/Server-$version-$type.jar"
