@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! /bin/bash
 command -v wget
 if [$? = 1]; then sudo apt install wget -y; fi
 
