@@ -79,19 +79,17 @@ class FileManager(threading.Thread):
 
         if location.endswith("/"):
             self.base_loca = location
-            location = location + "Serveur Minecraft " + self.mc_version + " " + self.server_version + ".jar"
-            self.download(location)
-
+        
         else:
             self.base_loca = location + "/"
-            location = location + "/Serveur Minecraft " + self.mc_version + " " + self.server_version + ".jar"
-            self.download(location)
+        location = location + "/Serveur Minecraft " + self.mc_version + " " + self.server_version + ".jar"
+        self.download(location)
 
     def download(self, location):
         files_in_folder = os.listdir()
 
         if not "server.properties" in files_in_folder:
-            with open(location, "wb") as server_file:
+            with open(self.base_loca, "wb") as server_file:
                 print("Downloading server " + self.mc_version + " " + self.server_version + " at " + location)
                 server_file.write(self.page.content)
                 server_file.close()
