@@ -12,6 +12,7 @@ SI VOUS SOUHAITEZ UTILISER UN FICHIER SUR PLUSIEURS ORDINATEURS DIFFÉRENTS, UTI
 [❌] Acceptation du CLUF
 [❌] Différentes langues
 [❌] Allocation de mémoire
+[❌] Configuration du serveur (server.properties)
 [❌] Version CLI (**C**ommand **L**ine **I**nterface)
 [❌] Téléchagement automatique de la dernière version
 
