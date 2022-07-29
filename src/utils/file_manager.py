@@ -4,7 +4,8 @@ import os
 
 class FileManager(threading.Thread):
 
-    def __init__(self, server_version, mc_version, location):
+    def __init__(self, server_version, mc_version, location, logger):
+        self.logger = logger
         self.thread = threading.Thread(name="Download Thread", target=self.start(server_version, mc_version, location))
         self.thread.start()
 
@@ -89,24 +90,22 @@ class FileManager(threading.Thread):
         files_in_folder = os.listdir()
 
         if not "server.properties" in files_in_folder:
-            with open(self.base_loca, "wb") as server_file:
-                print("Downloading server " + self.mc_version + " " + self.server_version + " at " + location)
+            with open(self.base_loca + "Serveur Minecraft " + self.mc_version + " " + self.server_version + ".jar", "wb") as server_file:
+                self.logger.log("File Manager", "Downloading server " + self.mc_version + " " + self.server_version + " at " + location)
                 server_file.write(self.page.content)
                 server_file.close()
 
             with open(self.base_loca + "start.bat", "w") as start_file:
-                print("Creating start file (bat)")
+                self.logger.log("File Manager", "Creating start file (bat)")
                 start_file.write(
 """@echo off
-java -jar "Serveur Minecraft """ + self.mc_version + """ """ + self.server_version + """.jar" -Xmx1024M -Xms4096M
-pause
-exit""")
+java -jar -Xmx2048M "Serveur Minecraft """ + self.mc_version + " " + self.server_version + """.jar
+pause""")
 
             with open(self.base_loca + "start.sh", "w") as start_file:
-                print("Creating start file (shell)")
+                self.logger.log("File Manager", "Creating start file (shell)")
                 start_file.write(
 """#! /bin/bash
-java -jar "Serveur Minecraft """ + self.mc_version + """ """ + self.server_version + """.jar" -Xmx1024M -Xms4096M
-pause
-exit""")
+java -jar Xmx2048M "Serveur Minecraft """ + self.mc_version + " " + self.server_version + ".jar")
                 start_file.close()
+                self.logger.log("File Manager", 'Download Ended')

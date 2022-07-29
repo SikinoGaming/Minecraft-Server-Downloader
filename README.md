@@ -9,7 +9,7 @@ SI VOUS SOUHAITEZ UTILISER UN FICHIER SUR PLUSIEURS ORDINATEURS DIFFÉRENTS, UTI
 ## Roadmap
 
 [✔️] Téléchargement des fichiers
-[❌] Acceptation du CLUF
+[✔️] Acceptation du CLUF
 [❌] Différentes langues
 [❌] Allocation de mémoire
 [❌] Configuration du serveur (server.properties)

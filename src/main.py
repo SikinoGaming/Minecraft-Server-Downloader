@@ -1,6 +1,9 @@
 import tkinter
-from windows.main_window import MainWindow
+from windows.download import DownloadWindow
+from utils.logger import Logger
+
+logger = Logger()
 
 window = tkinter.Tk()
-MainWindow(window)
+DownloadWindow(window, logger)
 window.mainloop()
