@@ -1,3 +1,4 @@
+
 # Minecraft-Server-Downloader
 
 ## 1. Version Python de Minecraft Server Downloader.
@@ -8,27 +9,28 @@ SI VOUS SOUHAITEZ UTILISER UN FICHIER SUR PLUSIEURS ORDINATEURS DIFFÉRENTS, UTI
 
 ## 2. Roadmap
 
-[✔️] Téléchargement des fichiers
-[✔️] Acceptation du CLUF
-[✔️] Différentes langues
-[❌] Allocation de mémoire
-[❌] Configuration du serveur (server.properties)
-[❌] Version CLI (**C**ommand **L**ine **I**nterface)
+[✔️] Téléchargement des fichiers<br>
+[✔️] Acceptation du CLUF<br>
+[✔️] Différentes langues<br>
+[❌] Allocation de mémoire<br>
+[❌] Configuration du serveur (server.properties)<br>
+[❌] Version CLI (**C**ommand **L**ine **I**nterface)<br>
 [❌] Téléchagement automatique de la dernière version de Minecraft Download Manager
 
 Versions :
-    [✔️] Vanila (de la 1.8 à la 1.19)
-    [❌] Bukkit
-    [❌] Spigot
-    [❌] Forge
-    [❌] Fabric
-    [❌] Modpack CurseForge
+- [✔️] Vanila (de la 1.8 à la 1.19)<br>
+- [❌] Bukkit<br>
+- [❌] Spigot<br>
+- [❌] Forge<br>
+- [❌] Fabric<br>
+- [❌] Modpack CurseForge
 
 ## 3. Problèmes
 
 Si les liens ne dirigent pas sur le bon jar (exemple : serveur 1.17 voulu et 1.17.1 téléchargé), faites une "Issue" avec le lien la version qui ne va pas.
 
 Exemple d'Issue :
+
 ``PROBLÈME DE LIEN : VANILLA 1.17``
 
 ## 4. Traductions
@@ -36,12 +38,12 @@ Exemple d'Issue :
 ### 4.1 Conditions et moyen d'envoi
 
 Vous pouvez aider la traduction du projet en faisant un pull request ou en m'envoyant le fichier en MP ou par mail.
-Merci de ne pas mettre de traduction troll (ce sera vérifié avec Google Traduction et Deepl).
+Merci de ne pas mettre de traduction troll (ce sera vérifié avec Google Traduction et Deepl).  
 
 ### 4.2 Forme du fichier
 
 Respectez la convention de nommage suivante pour le fichier : ``langue_REGION.lang`` (ex: "fr_FR.lang", "en_UK.lang", "en_US.lang", "es_ES.lang"...)
-Pareil pour les indices (ex:"all.name="), veillez à ne pas les modifier et à bien mettre votre traduction entre les guillemets (je suis assez tolérant et testerai avant pour modifier s'il y a un problème).
+Pareil pour les indices (ex:"all.name="), veillez à ne pas les modifier et à bien mettre votre traduction entre les guillemets (je suis assez tolérant et testerai avant pour modifier s'il y a un problème).  
 
 ### 4.3 Pull Request
 
@@ -50,6 +52,7 @@ Si vous voulez un pull request, mettez votre fichier ``.lang`` dans le dossier [
 ### 4.4 Autre forme d'envoi
 
 Vous pouvez m'envoyer le fichier ``.lang`` en envoyant un message sur mon [Discord](https://discord.gg/NaV9vwaUdx) dans le salon [#général](https://discord.com/channels/529301599143723008/807293011452231720) en précisant que c'est pour Minecraft Server Downloader.
+
 Si tu n'as pas Discord (qui n'a pas Discord mais bon ça arrive), tu peux m'envoyer un email à [sikino.gaming@gmail.com](mailto:sikino.gaming@gmail.com) en me mettant comme sujet ``Traduction Minecraft Server Downloader`` et ton ficher en pièce jointe.
 
 ### 4.5 Traducteurs
