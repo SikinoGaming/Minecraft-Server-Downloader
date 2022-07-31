@@ -2,14 +2,16 @@ import requests
 import threading
 import os
 
+from utils.logger import Logger
+
 class FileManager(threading.Thread):
 
-    def __init__(self, server_version, mc_version, location, logger):
+    def __init__(self, server_version:str, mc_version:str, location:str, logger:Logger):
         self.logger = logger
         self.thread = threading.Thread(name="Download Thread", target=self.start(server_version, mc_version, location))
         self.thread.start()
 
-    def start(self, server_version, mc_version, location):
+    def start(self, server_version:str, mc_version:str, location:str):
 
         self.server_version = str(server_version)
         self.mc_version = str(mc_version)
@@ -86,7 +88,7 @@ class FileManager(threading.Thread):
         location = location + "/Serveur Minecraft " + self.mc_version + " " + self.server_version + ".jar"
         self.download(location)
 
-    def download(self, location):
+    def download(self, location:str):
         files_in_folder = os.listdir()
 
         if not "server.properties" in files_in_folder:

@@ -13,7 +13,7 @@ class Logger:
         with open(self.log_file, "w+") as log_file: log_file.close()
 
 
-    def log(self, window_name, msg):
+    def log(self, window_name:str, msg:str):
         current_date = datetime.now()
         msg = "[" + str(current_date.month) + "/" + str(current_date.day) + "/"  + str(current_date.year) + "-" + str(current_date.hour) + ":" + str(current_date.minute) + ":" + str(current_date.second) + "." + str(current_date.microsecond) + "]" + "[" + window_name + "] " + str(msg)
         
