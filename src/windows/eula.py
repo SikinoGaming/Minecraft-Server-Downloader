@@ -3,28 +3,37 @@ import webbrowser
 import datetime
 from tkinter import *
 
+from utils.translations import TranslationsManager
+from utils.logger import Logger
+
 class EULAWindow:
 
-    def __init__(self, window, logger, path):
+    def __init__(self, window:Tk, logger:Logger, path, trans:TranslationsManager):
         self.logger = logger
         self.window = window
+        self.translations = trans
         self.widget_list = []
-        self.create_eula_window()
+        self.load()
         if path.endswith("/"):
             self.path = path
         else:
             self.path = path + "/"
 
-    def create_eula_window(self):
+    def load(self):
+        # TITLE
+        self.title = tkinter.Label(text=self.translations.get_trans("all.title"), background="#2E2E2E", fg="#DADADA", font=('Roboto', 14))
+        self.title.place(relx=0.5, rely=0.1, anchor=CENTER)
+        self.widget_list.insert(len(self.widget_list), self.title)
+
         # EULA LINK
-        self.link = tkinter.Label(text="Lien vers le Contrat de Licence Utilisateur Final de Mojang", background="#2E2E2E", fg="#0288d1", font=('Roboto', 14, 'underline'))
+        self.link = tkinter.Label(text=self.translations.get_trans("eula.link"), background="#2E2E2E", fg="#0288d1", font=('Roboto', 14, 'underline'))
         self.link.place(relx=0.5, rely=0.4, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.link)
         self.link.bind("<Button-1>", self.callback)
 
         # AGREE CHECKBOX
         self.agree = Checkbutton(self.window)
-        self.agree.configure(text="J'ai lu et j'accepte le Contrat de License Utilisateur Final de Mojang", command=self.create_eula_file, background="#2E2E2E", fg="#DADADA", font=('Roboto', 12, 'underline'), activebackground="#252525", activeforeground="#DADADA")
+        self.agree.configure(text=self.translations.get_trans("eula.agree"), command=self.create_eula_file, background="#2E2E2E", fg="#DADADA", font=('Roboto', 12, 'underline'), activebackground="#252525", activeforeground="#DADADA")
         self.agree.place(relx=0.5, rely=0.7, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.agree)
 
@@ -35,7 +44,7 @@ class EULAWindow:
     def create_eula_file(self):
         # Creating Label for waiting
         self.logger.log("EULA", "Creating EULA File")
-        self.creating_eula = Label(text="Création du fichier EULA requis pour lancer un serveur...", background="#2E2E2E", fg="#FF8C00", font=('Roboto', 14))
+        self.creating_eula = Label(text=self.translations.get_trans("eula.creating"), background="#2E2E2E", fg="#FF8C00", font=('Roboto', 14))
         self.creating_eula.place(relx=0.5, rely=0.8, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.creating_eula)
 
@@ -70,7 +79,7 @@ class EULAWindow:
             start_file.close()
         
         self.logger.log("EULA", 'eula.txt created')
-        self.creating_eula.configure(text='Le fichier "eula.txt" à été créé."')
+        self.creating_eula.configure(text=self.translations.get_trans("eula.created"))
 
     def unload_window(self):
         i=0

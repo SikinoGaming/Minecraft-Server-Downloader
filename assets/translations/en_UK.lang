@@ -1,0 +1,16 @@
+all.name="Minecraft Server Downloader"
+all.title="Minecraft Server Downloader Python Edition"
+all.next="Next"
+
+main.choose_type="Choose your server type"
+main.choose_mc="Choose your minecraft version"
+main.path_text="Server folder"
+main.download="Download server"
+main.error_type="ERROR : You need a server type"
+main.error_mc="ERROR : You need a Minecraft version"
+main.error_path="ERROR : You need a path to store your server"
+
+eula.link="Link to Mojang's End-User License Agreement"
+eula.agree="I have read Mojang's End-User License Agreement"
+eula.creating="Creating EULA file, required to launch the server..."
+eula.created=""eula.txt" file created."
