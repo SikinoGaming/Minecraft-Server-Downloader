@@ -1,5 +1,5 @@
 import tkinter
-from tkinter import *
+
 from tkinter.constants import *
 from typing import final
 from PIL import Image, ImageTk
@@ -10,7 +10,7 @@ from utils.translations import TranslationsManager
 
 class DownloadWindow:
 
-    def __init__(self, window:Tk, logger:Logger):
+    def __init__(self, window:tkinter.Tk, logger:Logger):
         self.logger = logger
         self.translations = TranslationsManager(self.logger)
         self.logger.log("DOWNLOAD", "Creating Window")
@@ -23,7 +23,7 @@ class DownloadWindow:
         #self.window.iconbitmap("../assets/server.ico")
         self.bg = Image.open("../assets/background.png").resize((640, 480))
         self.bg = ImageTk.PhotoImage(self.bg)
-        bg_label = Label(self.window, image = self.bg)
+        bg_label = tkinter.Label(self.window, image = self.bg)
         bg_label.place(x=0, y=0)
 
         self.minecraft_versions = [

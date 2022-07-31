@@ -1,14 +1,14 @@
 import tkinter 
 import webbrowser
 import datetime
-from tkinter import *
 
+from tkinter.constants import *
 from utils.translations import TranslationsManager
 from utils.logger import Logger
 
 class EULAWindow:
 
-    def __init__(self, window:Tk, logger:Logger, path, trans:TranslationsManager):
+    def __init__(self, window:tkinter.Tk, logger:Logger, path, trans:TranslationsManager):
         self.logger = logger
         self.window = window
         self.translations = trans
@@ -32,7 +32,7 @@ class EULAWindow:
         self.link.bind("<Button-1>", self.callback)
 
         # AGREE CHECKBOX
-        self.agree = Checkbutton(self.window)
+        self.agree = tkinter.Checkbutton(self.window)
         self.agree.configure(text=self.translations.get_trans("eula.agree"), command=self.create_eula_file, background="#2E2E2E", fg="#DADADA", font=('Roboto', 12, 'underline'), activebackground="#252525", activeforeground="#DADADA")
         self.agree.place(relx=0.5, rely=0.7, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.agree)
@@ -44,7 +44,7 @@ class EULAWindow:
     def create_eula_file(self):
         # Creating Label for waiting
         self.logger.log("EULA", "Creating EULA File")
-        self.creating_eula = Label(text=self.translations.get_trans("eula.creating"), background="#2E2E2E", fg="#FF8C00", font=('Roboto', 14))
+        self.creating_eula = tkinter.Label(text=self.translations.get_trans("eula.creating"), background="#2E2E2E", fg="#FF8C00", font=('Roboto', 14))
         self.creating_eula.place(relx=0.5, rely=0.8, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.creating_eula)
 
