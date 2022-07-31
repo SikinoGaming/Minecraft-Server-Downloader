@@ -59,5 +59,5 @@ Si tu n'as pas Discord (qui n'a pas Discord mais bon ça arrive), tu peux m'envo
 
 Remerciment a ceux qui ont traduit :
 
-Sikino : [Français (France)](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/assets/translations/fr_FR.lang), [Anglais (United Kingdom)](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/assets/translations/en_UK.lang)
+Sikino : [Français (France)](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/assets/translations/fr_FR.lang), [Anglais (United Kingdom)](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/assets/translations/en_UK.lang)<br>
 [YouTube](https://www.youtube.com/channel/UC08jBD4MwfhkNOR2gUS06CQ), [Instagram](https://www.instagram.com/sikinogaming/), [GitHub](https://github.com/SikinoGaming), [Discord](https://discord.gg/NaV9vwaUdx)
