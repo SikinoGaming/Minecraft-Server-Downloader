@@ -180,6 +180,7 @@ class DownloadWindow:
 
         else:
             FileManager(self.current_version_server, self.current_version, self.path_field.get(), self.logger)
+            self.create_next_button()
 
     def create_next_button(self):
         # NEXT BUTTON
