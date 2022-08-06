@@ -3,21 +3,21 @@ import webbrowser
 import datetime
 
 from tkinter.constants import *
-from utils.translations import TranslationsManager
-from utils.logger import Logger
+from windows.configuration import ConfigurationWindow
 
 class EULAWindow:
 
-    def __init__(self, window:tkinter.Tk, logger:Logger, path, trans:TranslationsManager):
-        self.logger = logger
+    def __init__(self, window:tkinter.Tk, download_window):
+        self.download_window = download_window
+        self.logger = self.download_window.logger
         self.window = window
-        self.translations = trans
+        self.translations = self.download_window.translations
         self.widget_list = []
         self.load()
-        if path.endswith("/"):
-            self.path = path
-        else:
-            self.path = path + "/"
+        self.create_next_button()
+        self.path = self.download_window.path_field.get()
+        if not self.path.endswith("/"):
+            self.path += "/"
 
     def load(self):
         # TITLE
@@ -37,13 +37,14 @@ class EULAWindow:
         self.agree.place(relx=0.5, rely=0.7, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.agree)
 
+        self.logger.log("EULA", "Created EULA's widgets")
+
     def callback(self, *args):
         webbrowser.open_new_tab("https://account.mojang.com/documents/minecraft_eula")
         self.logger.log("EULA", "Open EULA link")
 
     def create_eula_file(self):
         # Creating Label for waiting
-        self.logger.log("EULA", "Creating EULA File")
         self.creating_eula = tkinter.Label(text=self.translations.get_trans("eula.creating"), background="#2E2E2E", fg="#FF8C00", font=('Roboto', 14))
         self.creating_eula.place(relx=0.5, rely=0.8, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.creating_eula)
@@ -73,18 +74,29 @@ class EULAWindow:
             elif current.month == 11: month = "Nov"
             elif current.month == 12: month = "Dec"
 
-            self.logger.log("EULA", "Creating eula.txt")
             start_file.write("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n#" +
             weekday+ " " + month + " " + str(current.day) + " " + str(current.hour) + ":" + str(current.minute) + ":" + str(current.second) +" CEST "+ str(current.year) + "\neula=true")
             start_file.close()
         
         self.logger.log("EULA", 'eula.txt created')
         self.creating_eula.configure(text=self.translations.get_trans("eula.created"))
+        self.create_next_button()
 
     def unload_window(self):
         i=0
         for widget in self.widget_list:
             widget_name = [ i for i, a in locals().items() if a == widget][0]
-            self.logger.log("MAIN", "Removed " + widget_name + " from the screen (" + str(i + 1) + "/" + str(len(self.widget_list)) + ")")
+            self.logger.log("EULA", "Removed " + widget_name + " from the screen (" + str(i + 1) + "/" + str(len(self.widget_list)) + ")")
             widget.destroy()
             i += 1
+
+    def create_next_button(self):
+        # NEXT BUTTON
+        self.next_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("all.next"), relief=SOLID, fg="#DADADA", command=self.change_conf_window, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14))
+        self.next_button.place(relx=0.9, rely=0.93, anchor=CENTER)
+        self.widget_list.insert(len(self.widget_list), self.next_button)
+
+    def change_conf_window(self):
+        ConfigurationWindow(self.window, self)
+        self.unload_window()
+        self.logger.log("CONFIGURATION", "Changed window to CONFIGURATION")

@@ -9,8 +9,13 @@ main.download="Télécharger le serveur"
 main.error_type="ERREUR : Il vous faut sélectionner un type de serveur"
 main.error_mc="ERREUR : Il vous faut sélectionner une version de Minecraft"
 main.error_path="ERREUR : Le chemin d'arrivée n'est pas spécifié."
+main.error_dir="ERREUR : Il y a déjà un serveur dans ce dossier, videz le ou chnager d'emplacement"
 
 eula.link="Lien vers le Contrat de Licence de l'Utilisateur Final de Mojang"
 eula.agree="J'ai lu et j'accepte le Contrat de Licence de l'Utilisateur Final de Mojang"
 eula.creating="Création du fichier EULA requis pour lancer un serveur..."
 eula.created="Le fichier "eula.txt" a été créé."
+
+conf.memory="Choisissez la mémoire maximale a accorder à Minecraft (en Go)"
+conf.create="Appliquer les paramètres"
+conf.file="Fichiers de démarrage créés"

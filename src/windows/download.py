@@ -1,14 +1,16 @@
 import tkinter
+import threading
 
+from time import sleep
 from tkinter.constants import *
-from typing import final
+from math import log
 from PIL import Image, ImageTk
 from utils.file_manager import FileManager
 from utils.logger import Logger
 from windows.eula import EULAWindow
 from utils.translations import TranslationsManager
 
-class DownloadWindow:
+class DownloadWindow():
 
     def __init__(self, window:tkinter.Tk, logger:Logger):
         self.logger = logger
@@ -155,12 +157,12 @@ class DownloadWindow:
 
     def choise_version_server(self, *args):
         self.current_version_server = self.variable_server.get()
-        self.logger.log("DOWNLOAD", self.current_version_server)
+        self.logger.log("DOWNLOAD", "Selected type : " + self.current_version_server)
 
 
     def choise_version_mc(self, *args):
         self.current_version = self.variable_mc.get()
-        self.logger.log("DOWNLOAD", self.current_version)
+        self.logger.log("DOWNLOAD", "Selected version : " + self.current_version)
 
     def init_download(self):
         if self.current_version_server == "0":
@@ -179,7 +181,9 @@ class DownloadWindow:
             self.widget_list.insert(len(self.widget_list), self.error)
 
         else:
-            FileManager(self.current_version_server, self.current_version, self.path_field.get(), self.logger)
+            self.file_manager = FileManager(self)
+            self.track_thread = threading.Thread(target=self.track_download, args=())
+            self.track_thread.start()
             self.create_next_button()
 
     def create_next_button(self):
@@ -189,7 +193,7 @@ class DownloadWindow:
         self.widget_list.insert(len(self.widget_list), self.next_button)
 
     def change_eula_window(self):
-        EULAWindow(self.window, self.logger, self.path_field.get(), self.translations)
+        EULAWindow(self.window, self)
         self.unload_window()
         self.logger.log("EULA", "Changed window to EULA")
 
@@ -205,3 +209,99 @@ class DownloadWindow:
         self.translations.change_lang()
         self.unload_window()
         self.load()
+
+    def show_dir_error(self):
+        self.error = tkinter.Label(text=self.translations.get_trans("main.error_dir"), background="#FF8C00", relief=SOLID, font=('Roboto', 14))
+        self.error.place(relx=0.5, rely=0.9, anchor=CENTER)
+        self.widget_list.insert(len(self.widget_list), self.error)
+
+    def track_download(self):
+        self.error = tkinter.Label(text="Starting download", background="#FF8C00", relief=SOLID, font=('Roboto', 14))
+        self.error.place(relx=0.5, rely=0.9, anchor=CENTER)
+        self.widget_list.insert(len(self.widget_list), self.error)
+        sleep(1)
+        while self.file_manager.file.get_status() == "downloading":
+            file = self.file_manager.file
+            self.error.configure(text=str(self.sizeof_human(file.get_dl_size())) + "/" + str(self.sizeof_human(file.get_final_filesize())) + " (" + str(file.get_progress() * 100)[:5] + "%) @ " + str(self.sizeof_human(round(file.get_speed(), 2))) + "/s, " + str(self.time_human(file.get_dl_time())))
+            sleep(0.5)
+        #self.error.configure(text="Download Finished")
+
+    # Code from https://github.com/iTaybb/pySmartDL/blob/master/pySmartDL/utils.py
+
+    def sizeof_human(self, num):
+        '''
+        Human-readable formatting for filesizes. Taken from `here <http://stackoverflow.com/questions/1094841/reusable-library-to-get-human-readable-version-of-file-size>`_.
+
+        >>> sizeof_human(175799789)
+        '167.7 MB'
+
+        :param num: Size in bytes.
+        :type num: int
+
+        :rtype: string
+        '''
+        unit_list = list(zip(['B', 'kB', 'MB', 'GB', 'TB', 'PB'], [0, 0, 1, 2, 2, 2]))
+
+        if num > 1:
+            exponent = min(int(log(num, 1024)), len(unit_list) - 1)
+            quotient = float(num) / 1024**exponent
+            unit, num_decimals = unit_list[exponent]
+
+            format_string = '{:,.%sf} {}' % (num_decimals)
+            return format_string.format(quotient, unit)
+
+        if num == 0:
+            return '0 bytes'
+        if num == 1:
+            return '1 byte'
+
+    def time_human(self, duration, fmt_short=False, show_ms=False):
+        '''
+        Human-readable formatting for timing. Based on code from `here <http://stackoverflow.com/questions/6574329/how-can-i-produce-a-human-readable-difference-when-subtracting-two-unix-timestam>`_.
+
+        >>> time_human(175799789)
+        '6 years, 2 weeks, 4 days, 17 hours, 16 minutes, 29 seconds'
+        >>> time_human(589, fmt_short=True)
+        '9m49s'
+
+        :param duration: Duration in seconds.
+        :type duration: int/float
+        :param fmt_short: Format as a short string (`47s` instead of `47 seconds`)
+        :type fmt_short: bool
+        :param show_ms: Specify milliseconds in the string.
+        :type show_ms: bool
+        :rtype: string
+        '''
+        ms = int(duration % 1 * 1000)
+        duration = int(duration)
+        if duration == 0 and (not show_ms or ms == 0):
+            return "0s" if fmt_short else "0 seconds"
+
+        INTERVALS = [1, 60, 3600, 86400, 604800, 2419200, 29030400]
+        if fmt_short:
+            NAMES = ['s'*2, 'm'*2, 'h'*2, 'd'*2, 'w'*2, 'y'*2]
+        else:
+            NAMES = [
+                ('second', 'seconds'),
+                ('minute', 'minutes'),
+                ('hour', 'hours'),
+                ('day', 'days'),
+                ('week', 'weeks'),
+                ('month', 'months'),
+                ('year', 'years')
+            ]
+
+        result = []
+
+        for i in range(len(NAMES)-1, -1, -1):
+            a = duration // INTERVALS[i]
+            if a > 0:
+                result.append( (a, NAMES[i][1 % a]) )
+                duration -= a * INTERVALS[i]
+
+        if show_ms and ms > 0:
+            result.append((ms, "ms" if fmt_short else "milliseconds"))
+
+        if fmt_short:
+            return "".join(["%s%s" % x for x in result])
+        return ", ".join(["%s %s" % x for x in result])

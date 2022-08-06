@@ -9,8 +9,13 @@ main.download="Download server"
 main.error_type="ERROR : You need a server type"
 main.error_mc="ERROR : You need a Minecraft version"
 main.error_path="ERROR : You need a path to store your server"
+main.error_dir="ERROR : There is already a server in this folder, empty it or change location"
 
 eula.link="Link to Mojang's End-User License Agreement"
 eula.agree="I have read Mojang's End-User License Agreement"
 eula.creating="Creating EULA file, required to launch the server..."
 eula.created=""eula.txt" file created."
+
+conf.memory="Choose the maximum memory to give to Minecraft (in GB)"
+conf.create="Apply settings"
+conf.file="Launch files created"
