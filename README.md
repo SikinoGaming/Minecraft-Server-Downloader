@@ -12,7 +12,7 @@ SI VOUS SOUHAITEZ UTILISER UN FICHIER SUR PLUSIEURS ORDINATEURS DIFFÉRENTS, UTI
 [✔️] Téléchargement des fichiers<br>
 [✔️] Acceptation du CLUF<br>
 [✔️] Différentes langues<br>
-[❌] Allocation de mémoire<br>
+[✔️] Allocation de mémoire<br>
 [❌] Configuration du serveur (server.properties)<br>
 [❌] Version CLI (**C**ommand **L**ine **I**nterface)<br>
 [❌] Téléchagement automatique de la dernière version de Minecraft Download Manager
