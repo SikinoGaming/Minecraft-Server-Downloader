@@ -12,10 +12,12 @@ SI VOUS SOUHAITEZ UTILISER UN FICHIER SUR PLUSIEURS ORDINATEURS DIFFÉRENTS, UTI
 [✔️] Téléchargement des fichiers<br>
 [✔️] Acceptation du CLUF<br>
 [✔️] Différentes langues<br>
-[❌] Allocation de mémoire<br>
-[❌] Configuration du serveur (server.properties)<br>
+[✔️] Allocation de mémoire<br>
+[✔️] Amélioration du téléchargement<br>
 [❌] Version CLI (**C**ommand **L**ine **I**nterface)<br>
-[❌] Téléchagement automatique de la dernière version de Minecraft Download Manager
+[❌] Configuration du serveur (server.properties)<br>
+[❌] Téléchagement automatique de la dernière version de Minecraft Download Manager<br>
+[❌] Amélioration du GUI<br>
 
 Versions :
 - [✔️] Vanila (de la 1.8 à la 1.19)<br>
@@ -27,18 +29,25 @@ Versions :
 
 ## 3. Problèmes
 
+### 3.1 Liens
+
 Si les liens ne dirigent pas sur le bon jar (exemple : serveur 1.17 voulu et 1.17.1 téléchargé), faites une "Issue" avec le lien la version qui ne va pas.
 
 Exemple d'Issue :
 
 ``PROBLÈME DE LIEN : VANILLA 1.17``
 
+### 3.2 Autres bugs
+
+Si vous avez trouvé un bug, merci de faire une Issue avec un screenshot (ou une vidéo qui filme les étapes c'est encore mieux) du bug et des logs (dans la console si possible et sinon la dernière dans logs/ elles ont leur année, mois, jour, heure, minute et seconde de lancement donc vous pouvez pas vous tromper, normalement) et ne supprimez pas ces fichiers car vous pouvez vous tromper et les anciennes logs peuvent être utiles.
+Si vous avez envoyé une photo, merci de nous faire une phrase avec les choses à faire pour reproduire le bug.
+
 ## 4. Traductions
 
 ### 4.1 Conditions et moyen d'envoi
 
 Vous pouvez aider la traduction du projet en faisant un pull request ou en m'envoyant le fichier en MP ou par mail.
-Merci de ne pas mettre de traduction troll (ce sera vérifié avec Google Traduction et Deepl).  
+Merci de ne pas mettre de traduction troll (ce sera vérifié avec Google Traduction et/ou DeepL).  
 
 ### 4.2 Forme du fichier
 
