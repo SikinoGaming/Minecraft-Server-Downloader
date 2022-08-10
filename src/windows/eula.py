@@ -50,7 +50,7 @@ class EULAWindow:
         self.widget_list.insert(len(self.widget_list), self.creating_eula)
 
         # Creating eula.txt file
-        with open(self.path + "eula.txt", "w") as start_file:
+        with open(self.path + "eula.txt", "w") as eula_file:
             current = datetime.datetime.now()
             weekday = ""
             if current.weekday() == 0: weekday = "Mon"
@@ -74,9 +74,9 @@ class EULAWindow:
             elif current.month == 11: month = "Nov"
             elif current.month == 12: month = "Dec"
 
-            start_file.write("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n#" +
+            eula_file.write("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n#" +
             weekday+ " " + month + " " + str(current.day) + " " + str(current.hour) + ":" + str(current.minute) + ":" + str(current.second) +" CEST "+ str(current.year) + "\neula=true")
-            start_file.close()
+            eula_file.close()
         
         self.logger.log("EULA", 'eula.txt created')
         self.creating_eula.configure(text=self.translations.get_trans("eula.created"))
