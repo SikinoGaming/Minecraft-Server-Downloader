@@ -13,9 +13,11 @@ SI VOUS SOUHAITEZ UTILISER UN FICHIER SUR PLUSIEURS ORDINATEURS DIFFÉRENTS, UTI
 [✔️] Acceptation du CLUF<br>
 [✔️] Différentes langues<br>
 [✔️] Allocation de mémoire<br>
-[❌] Configuration du serveur (server.properties)<br>
+[✔️] Amélioration du téléchargement<br>
 [❌] Version CLI (**C**ommand **L**ine **I**nterface)<br>
-[❌] Téléchagement automatique de la dernière version de Minecraft Download Manager
+[❌] Configuration du serveur (server.properties)<br>
+[❌] Téléchagement automatique de la dernière version de Minecraft Download Manager<br>
+[❌] Amélioration du GUI<br>
 
 Versions :
 - [✔️] Vanila (de la 1.8 à la 1.19)<br>
