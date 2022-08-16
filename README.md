@@ -62,23 +62,23 @@ Si vous envoyez votre traduction via un pull request, mettez votre fichier ``.la
 
 Vous pouvez m'envoyer le fichier ``.lang`` en envoyant un message sur mon [Discord](https://discord.gg/NaV9vwaUdx) dans le salon [#général](https://discord.com/channels/529301599143723008/807293011452231720) en précisant que c'est pour Minecraft Server Downloader.
 
-Si tu n'as pas Discord (qui n'a pas Discord mais bon ça arrive), tu peux m'envoyer un email à [sikino.gaming@gmail.com](mailto:sikino.gaming@gmail.com) en me mettant comme sujet ``Traduction Minecraft Server Downloader`` et ton ficher en pièce jointe.
+Si tu n'as pas Discord (qui n'a pas Discord mais bon ça arrive), tu peux m'envoyer un email à [sikino.gaming@gmail.com](mailto:sikino.gaming@gmail.com) en me mettant comme sujet ``Traduction Minecraft Server Downloader`` et ton fichier en pièce jointe.
 
 ## 5. Liens
 
 ### 5.1 Le projet a besoin de votre aide
 
-Vous pouvez aider le projet en ajoutant des liens. Ces liens peuvent être trouvés sur des sites en cherchant "JAR Server MC {VERSION}" sur google. Je conseil les sites [mcversions.net](mcversions.net) et [minecraft.net](minecraft.net) (dans les arcticles sortis avec la mise à jour (le nom suis ce partern : "MINECRAFT {VERSION} RELEASED")). Vérifiez a bien prendre les lien des SERVEURS en JAR et SUR LES SERVEURS DE MOJANG (launcher.mojang.com) pour les serveurs vanilla. Les version serons vérifiés.
+Vous pouvez aider le projet en ajoutant des liens. Ses liens peuvent être trouvés sur des sites en cherchant "JAR Serveur MC {VERSION}" sur google. Je conseille les sites [mcversions.net](mcversions.net) et [minecraft.net](minecraft.net) (dans les articles sortis avec la mise à jour (le nom est ce pattern : "MINECRAFT {VERSION} RELEASED")). Vérifiez à bien prendre les liens des SERVEURS en JAR et SUR LES SERVEURS DE MOJANG (launcher.mojang.com) pour les serveurs vanilla. Les liens seront vérifiés.
 
 ### 5.2 Pull Request
 
-Si vous envoyez vos liens via un pull request, ajoutez une ligne avec le paterne suivant : ``"{VERSION}" : "{LIEN}",`` sous la catégorie du serveur (Vanilla, Spigot, ...).  Les liens sont a ranger de la version la plus jeune (en haut) à la plus vieille (en bas) dans le [link.json](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/src/utils/links.json).
+Si vous envoyez vos liens via un pull request, ajoutez une ligne avec le paterne suivant : ``"{VERSION}" : "{LIEN}",`` sous la catégorie du serveur (Vanilla, Spigot, ...).  Les liens sont à ranger de la version la plus jeune (en haut) à la plus vieille (en bas) dans le [link.json](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/src/utils/links.json).
 
 ### 5.3 Autres formes d'envoi
 
-Vous pouvez m'envoyer le fichier ou un message avec le texte a ajouter sur mon [Discord](https://discord.gg/NaV9vwaUdx) dans le salon [#général](https://discord.com/channels/529301599143723008/807293011452231720) en précisant que c'est pour Minecraft Server Downloader.
+Vous pouvez m'envoyer le fichier ou un message avec le texte à ajouter sur mon [Discord](https://discord.gg/NaV9vwaUdx) dans le salon [#général](https://discord.com/channels/529301599143723008/807293011452231720) en précisant que c'est pour Minecraft Server Downloader.
 
-Si tu n'as pas Discord (qui n'a pas Discord mais bon ça arrive), tu peux m'envoyer un email à [sikino.gaming@gmail.com](mailto:sikino.gaming@gmail.com) en me mettant comme sujet ``Ajout Liens Minecraft Server Downloader`` et ton ficher en pièce jointe ou les liens avec les versions dans en message.
+Si tu n'as pas Discord (qui n'a pas Discord mais bon ça arrive), tu peux m'envoyer un email à [sikino.gaming@gmail.com](mailto:sikino.gaming@gmail.com) en me mettant comme sujet ``Ajout Liens Minecraft Server Downloader`` et ton fichier en pièce jointe ou les liens avec les versions dans en message.
 
 ## 6 Contributeurs
 
