@@ -38,7 +38,8 @@ class CommandLineInterface:
                 file.close()
         except KeyError as e:
             print("There is the problem with your server type or version. Try search (Ctrl + F) in links.json to see if the link is registered.")
-        
+            exit(1)
+
         self.file = SmartDL(self.link, self.loca + "Serveur Minecraft " + self.mc_version + " " + self.server_version + ".jar")
 
         files_in_folder = os.listdir(path=self.loca)
