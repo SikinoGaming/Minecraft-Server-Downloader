@@ -14,7 +14,7 @@ SI VOUS SOUHAITEZ UTILISER UN FICHIER SUR PLUSIEURS ORDINATEURS DIFFÉRENTS, UTI
 [✔️] Différentes langues<br>
 [✔️] Allocation de mémoire<br>
 [✔️] Amélioration du téléchargement<br>
-[❌] Version CLI (**C**ommand **L**ine **I**nterface)<br>
+[✔️] Version CLI (**C**ommand **L**ine **I**nterface)<br>
 [❌] Configuration du serveur (server.properties)<br>
 [❌] Téléchagement automatique de la dernière version de Minecraft Download Manager<br>
 [❌] Amélioration du GUI<br>
