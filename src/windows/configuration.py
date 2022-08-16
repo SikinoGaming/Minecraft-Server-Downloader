@@ -58,7 +58,7 @@ java -jar -Xmx""" + str(self.slider.get()*1024) + """M "Serveur Minecraft """ + 
             start_sh.close()
 
             self.info = tkinter.Label(text=self.translations.get_trans("conf.file"), background="#FF8C00", relief=SOLID, font=('Roboto', 14))
-            self.info.place(relx=0.5, rely=0.9, anchor=CENTER)
+            self.info.place(relx=0.5, rely=0.85, anchor=CENTER)
             self.widget_list.insert(len(self.widget_list), self.info)
 
     def unload_window(self):
