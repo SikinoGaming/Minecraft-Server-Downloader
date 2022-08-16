@@ -219,12 +219,12 @@ class DownloadWindow():
         self.error = tkinter.Label(text="Starting download", background="#FF8C00", relief=SOLID, font=('Roboto', 14))
         self.error.place(relx=0.5, rely=0.9, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.error)
-        sleep(1)
+        sleep(0.3)
         while self.file_manager.file.get_status() == "downloading":
             file = self.file_manager.file
             self.error.configure(text=str(self.sizeof_human(file.get_dl_size())) + "/" + str(self.sizeof_human(file.get_final_filesize())) + " (" + str(file.get_progress() * 100)[:5] + "%) @ " + str(self.sizeof_human(round(file.get_speed(), 2))) + "/s, " + str(self.time_human(file.get_dl_time())))
             sleep(0.5)
-        #self.error.configure(text="Download Finished")
+        self.error.configure(text="Download Finished")
 
     # Code from https://github.com/iTaybb/pySmartDL/blob/master/pySmartDL/utils.py
 
