@@ -46,7 +46,7 @@ class ConfigurationWindow:
             self.logger.log("CONFIGURATION", "Creating start file (bat)")
             start_bat.write(
 """@echo off
-java -jar -Xmx""" + str(self.slider.get()*1024) + """M "Serveur Minecraft """ + self.eula_window.download_window.current_version + " " + self.eula_window.download_window.current_version_server + '''".jar
+java -jar -Xmx""" + str(self.slider.get()*1024) + """M "Serveur Minecraft """ + self.eula_window.download_window.current_version + " " + self.eula_window.download_window.current_version_server + '''.jar"
 pause''')
             start_bat.close()
 
