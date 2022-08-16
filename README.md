@@ -44,7 +44,7 @@ Si vous avez envoyé une photo, merci de nous faire une phrase avec les choses �
 
 ## 4. Traductions
 
-### 4.1 Conditions et moyen d'envoi
+### 4.1 Le projet a besoin de votre aide
 
 Vous pouvez aider la traduction du projet en faisant un pull request ou en m'envoyant le fichier en MP ou par mail.
 Merci de ne pas mettre de traduction troll (ce sera vérifié avec Google Traduction et/ou DeepL).  
@@ -56,7 +56,7 @@ Pareil pour les indices (ex:"all.name="), veillez à ne pas les modifier et à b
 
 ### 4.3 Pull Request
 
-Si vous voulez un pull request, mettez votre fichier ``.lang`` dans le dossier [/assets/translations/](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/assets/translations/) et d'ajouter le nom (nom du fichier sans le ``.lang``) à la variable self.langs de [src/utils/translations.py](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/src/utils/translations.py) en l'ajoutant avant le ] de cette façon : ``, "nom"`` (ex: ``, "en_UK"``).
+Si vous envoyez votre traduction via un pull request, mettez votre fichier ``.lang`` dans le dossier [/assets/translations/](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/assets/translations/) et d'ajouter le nom (nom du fichier sans le ``.lang``) à la variable self.langs de [src/utils/translations.py](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/src/utils/translations.py) en l'ajoutant avant le ] de cette façon : ``, "nom"`` (ex: ``, "en_UK"``).
 
 ### 4.4 Autre forme d'envoi
 
@@ -64,9 +64,22 @@ Vous pouvez m'envoyer le fichier ``.lang`` en envoyant un message sur mon [Disco
 
 Si tu n'as pas Discord (qui n'a pas Discord mais bon ça arrive), tu peux m'envoyer un email à [sikino.gaming@gmail.com](mailto:sikino.gaming@gmail.com) en me mettant comme sujet ``Traduction Minecraft Server Downloader`` et ton ficher en pièce jointe.
 
-### 4.5 Traducteurs
+## 5. Liens
 
-Remerciment a ceux qui ont traduit :
+### 5.1 Le projet a besoin de votre aide
 
-Sikino : [Français (France)](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/assets/translations/fr_FR.lang), [Anglais (United Kingdom)](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/assets/translations/en_UK.lang)<br>
-[YouTube](https://www.youtube.com/channel/UC08jBD4MwfhkNOR2gUS06CQ), [Instagram](https://www.instagram.com/sikinogaming/), [GitHub](https://github.com/SikinoGaming), [Discord](https://discord.gg/NaV9vwaUdx)
+Vous pouvez aider le projet en ajoutant des liens. Ces liens peuvent être trouvés sur des sites en cherchant "JAR Server MC {VERSION}" sur google. Je conseil les sites [mcversions.net](mcversions.net) et [minecraft.net](minecraft.net) (dans les arcticles sortis avec la mise à jour (le nom suis ce partern : "MINECRAFT {VERSION} RELEASED")). Vérifiez a bien prendre les lien des SERVEURS en JAR et SUR LES SERVEURS DE MOJANG (launcher.mojang.com) pour les serveurs vanilla. Les version serons vérifiés.
+
+### 5.2 Pull Request
+
+Si vous envoyez vos liens via un pull request, ajoutez une ligne avec le paterne suivant : ``"{VERSION}" : "{LIEN}",`` sous la catégorie du serveur (Vanilla, Spigot, ...).  Les liens sont a ranger de la version la plus jeune (en haut) à la plus vieille (en bas) dans le [link.json](https://github.com/SikinoGaming/Minecraft-Server-Downloader/tree/Python/src/utils/links.json).
+
+### 5.3 Autres formes d'envoi
+
+Vous pouvez m'envoyer le fichier ou un message avec le texte a ajouter sur mon [Discord](https://discord.gg/NaV9vwaUdx) dans le salon [#général](https://discord.com/channels/529301599143723008/807293011452231720) en précisant que c'est pour Minecraft Server Downloader.
+
+Si tu n'as pas Discord (qui n'a pas Discord mais bon ça arrive), tu peux m'envoyer un email à [sikino.gaming@gmail.com](mailto:sikino.gaming@gmail.com) en me mettant comme sujet ``Ajout Liens Minecraft Server Downloader`` et ton ficher en pièce jointe ou les liens avec les versions dans en message.
+
+## 6 Contributeurs
+
+Sikino (Traduction, Liens, Code): [YouTube](https://www.youtube.com/channel/UC08jBD4MwfhkNOR2gUS06CQ), [Instagram](https://www.instagram.com/sikinogaming/), [GitHub](https://github.com/SikinoGaming), [Discord](https://discord.gg/NaV9vwaUdx)
