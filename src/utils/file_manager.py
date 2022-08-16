@@ -9,6 +9,8 @@ class FileManager():
     def __init__(self, download_window):
         self.download_window = download_window
         self.logger = self.download_window.logger
+        self.server_version = self.download_window.current_version_server
+        self.mc_version = self.download_window.current_version
         base_path = self.download_window.path_field.get()
         if base_path.endswith("/"):
             self.loca = base_path
