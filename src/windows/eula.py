@@ -55,7 +55,7 @@ class EULAWindow:
             weekday = ""
             if current.weekday() == 0: weekday = "Mon"
             elif current.weekday() == 1: weekday = "Tue"
-            elif current.weekday() == 2: weekday = "Wen"
+            elif current.weekday() == 2: weekday = "Wed"
             elif current.weekday() == 3: weekday = "Thu"
             elif current.weekday() == 4: weekday = "Fri"
             elif current.weekday() == 5: weekday = "Sat"
@@ -74,8 +74,8 @@ class EULAWindow:
             elif current.month == 11: month = "Nov"
             elif current.month == 12: month = "Dec"
 
-            eula_file.write("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n#" +
-            weekday+ " " + month + " " + str(current.day) + " " + str(current.hour) + ":" + str(current.minute) + ":" + str(current.second) +" CEST "+ str(current.year) + "\neula=true")
+            eula_file.write("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n" +
+            f"#{weekday} {month} {self.my_format(current.day)} {self.my_format(current.hour)}:{self.my_format(current.minute)}:{self.my_format(current.second)} CEST {self.my_format(current.year)}\neula=true")
             eula_file.close()
         
         self.logger.log("EULA", 'eula.txt created')
@@ -85,8 +85,7 @@ class EULAWindow:
     def unload_window(self):
         i=0
         for widget in self.widget_list:
-            widget_name = [ i for i, a in locals().items() if a == widget][0]
-            self.logger.log("EULA", "Removed " + widget_name + " from the screen (" + str(i + 1) + "/" + str(len(self.widget_list)) + ")")
+            self.logger.log("EULA", "Removed one widget from the screen (" + str(i + 1) + "/" + str(len(self.widget_list)) + ")")
             widget.destroy()
             i += 1
 
@@ -100,3 +99,10 @@ class EULAWindow:
         ConfigurationWindow(self.window, self)
         self.unload_window()
         self.logger.log("CONFIGURATION", "Changed window to CONFIGURATION")
+
+    def my_format(self, txt, *args) -> str:
+        txt = str(txt)
+        if len(txt) == 1:
+            return "0" + txt
+        else:
+            return txt
