@@ -75,7 +75,7 @@ class EULAWindow:
             elif current.month == 12: month = "Dec"
 
             eula_file.write("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n" +
-            f"#{weekday} {month} {self.my_format(current.day)} {self.my_format(current.hour)}:{self.my_format(current.minute)}:{self.my_format(current.second)} CEST {self.my_format(current.year)}\neula=true")
+            f"#{weekday} {month} {self.my_format(current.day)} {self.my_format(current.hour)}:{self.my_format(current.minute)}:{self.my_format(current.second)} CEST {current.year}\neula=true")
             eula_file.close()
         
         self.logger.log("EULA", 'eula.txt created')
