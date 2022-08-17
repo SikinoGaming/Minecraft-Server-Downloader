@@ -5,7 +5,7 @@ class TranslationsManager:
     def __init__(self, logger:Logger):
         self.logger = logger
         self.langs = ["fr_FR", "en_UK"]
-        self.lang = "fr_FR"
+        self.lang = "en_UK"
 
     def get_trans(self, id:str) -> str:
         with open("../assets/translations/" + self.lang + ".lang", "r") as trans_file:
