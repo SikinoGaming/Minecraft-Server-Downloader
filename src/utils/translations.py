@@ -12,12 +12,13 @@ class TranslationsManager:
             for count, line in enumerate(trans_file):
                 if line.startswith(id):
                     return line[len(id)+2:-2]
-            # if trad is 404:Not Found
-            self.logger.log("Translations Manager", "Translation " + id + " not found")
-            if self.lang == "fr_FR":
-                return "Si tu vois ça, crée une Issue sur le GitHub du projet / envoyer un message a Sikino et de garder ton dernier fichier log (dans le dossier logs)"
-            elif self.lang == "en_UK":
-                return "If you see that, create an Issue at the project's GitHub / tell it to Sikino and keep the last log file (in the logs folder)"
+        # if trad is 404:Not Found
+            trans_file.close()
+        self.logger.log("Translations Manager", "Translation " + id + " not found")
+        with open("../assets/translations/en_UK.lang", "r") as trans_file:
+            for count, line in enumerate(trans_file):
+                if line.startswith(id):
+                    return line[len(id)+2:-2]
 
     def change_lang(self):
         # Check if current lang isn't the last
