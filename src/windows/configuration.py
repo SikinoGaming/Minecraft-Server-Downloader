@@ -1,9 +1,8 @@
 import tkinter
 import psutil
 
-from utils.logger import Logger
-from utils.translations import TranslationsManager
 from tkinter.constants import *
+from .properties import PropertiesWindow
 
 
 class ConfigurationWindow:
@@ -17,6 +16,7 @@ class ConfigurationWindow:
         self.widget_list = []
         self.nogui_accepted = False
         self.load()
+        self.create_next_button()
 
     def load(self):
         # TITLE
@@ -32,7 +32,7 @@ class ConfigurationWindow:
         # MEMORY SLIDER
         self.slider = tkinter.Scale(self.window, from_=1, to=str(int(psutil.virtual_memory().total) / (1024 * 1024 * 1024))[:1], orient=HORIZONTAL, background='#2E2E2E', relief=SOLID, fg="#DADADA", highlightbackground="#7A7A7A", activebackground="#252525", font=('Roboto', 14))
         self.slider.place(relx=0.5, rely=0.5, anchor=CENTER)
-        self.widget_list.insert(len(self.widget_list), self.title)
+        self.widget_list.insert(len(self.widget_list), self.slider)
 
         # NOGUI CHECKBOX
         self.nogui = tkinter.Checkbutton(self.window)
@@ -81,3 +81,14 @@ java -jar -Xmx""" + str(self.slider.get()*1024) + """M "Serveur Minecraft """ + 
             self.logger.log("CONFIGURATION", "Removed " + widget_name + " from the screen (" + str(i + 1) + "/" + str(len(self.widget_list)) + ")")
             widget.destroy()
             i += 1
+
+    def create_next_button(self):
+        # NEXT BUTTON
+        self.next_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("all.next"), relief=SOLID, fg="#DADADA", command=self.change_properties_window, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14))
+        self.next_button.place(relx=0.9, rely=0.93, anchor=CENTER)
+        self.widget_list.insert(len(self.widget_list), self.next_button)
+
+    def change_properties_window(self):
+        PropertiesWindow(self.window, self)
+        self.unload_window()
+        self.logger.log("PROPERTIES", "Changed window to PROPERTIES")
