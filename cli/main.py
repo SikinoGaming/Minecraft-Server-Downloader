@@ -31,7 +31,7 @@ class CommandLineInterface:
             self.loca = args.path
         else:
             self.loca = args.path + "/"
-        
+
         try:
             with open("links.json", "r") as file:
                 self.link = json.loads(file.read())[self.server_version][self.mc_version]
@@ -40,7 +40,7 @@ class CommandLineInterface:
             print("There is the problem with your server type or version. Try search (Ctrl + F) in links.json to see if the link is registered.")
             exit(1)
 
-        self.file = SmartDL(self.link, self.loca + "Serveur Minecraft " + self.mc_version + " " + self.server_version + ".jar")
+        self.file = SmartDL(self.link, self.loca + "server.jar")
 
         files_in_folder = os.listdir(path=self.loca)
         if not "server.properties" in files_in_folder:
