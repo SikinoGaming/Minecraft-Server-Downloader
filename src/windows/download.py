@@ -24,9 +24,11 @@ class DownloadWindow():
         self.window.maxsize(1440, 1080)
         #self.window.iconbitmap("../assets/server.ico")
         self.bg = Image.open("../assets/background.png").resize((640, 480))
-        self.bg = ImageTk.PhotoImage(self.bg)
-        bg_label = tkinter.Label(self.window, image = self.bg)
-        bg_label.place(x=0, y=0)
+        self.bg_copy= self.bg.copy()
+        self.bg_image = ImageTk.PhotoImage(self.bg)
+        self.bg_label = tkinter.Label(self.window, image = self.bg_image)
+        self.bg_label.place(x=0, y=0)
+        self.window.bind("<Configure>", self.resize_bg)
 
         self.minecraft_versions = [
             "1.19",
@@ -98,7 +100,7 @@ class DownloadWindow():
 
         # TITLE
         self.title = tkinter.Label(text=self.translations.get_trans("all.title"), background="#2E2E2E", fg="#DADADA", font=('Roboto', 14))
-        self.title.place(relx=0.61, rely=0.1, anchor=CENTER)
+        self.title.place(relx=0.5, rely=0.1, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.title)
 
         # FLAG
@@ -225,6 +227,13 @@ class DownloadWindow():
             self.error.configure(text=str(self.sizeof_human(file.get_dl_size())) + "/" + str(self.sizeof_human(file.get_final_filesize())) + " (" + str(file.get_progress() * 100)[:5] + "%) @ " + str(self.sizeof_human(round(file.get_speed(), 2))) + "/s, " + str(self.time_human(file.get_dl_time())))
             sleep(0.5)
         self.error.configure(text="Download Finished")
+
+    def resize_bg(self, e):
+        if e.widget == self.window:
+            self.bg = self.bg_copy.resize((e.width, e.height))
+            self.bg_image = ImageTk.PhotoImage(self.bg)
+            self.bg_label.configure(image = self.bg_image)
+
 
     # Code from https://github.com/iTaybb/pySmartDL/blob/master/pySmartDL/utils.py
 
