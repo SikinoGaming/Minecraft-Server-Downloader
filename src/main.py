@@ -9,8 +9,6 @@ except ImportError as e:
 from windows.download import DownloadWindow
 from utils.logger import Logger
 
-
-
 if __name__ == "__main__":
     logger = Logger()
     
