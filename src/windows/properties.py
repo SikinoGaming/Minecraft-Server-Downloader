@@ -298,8 +298,7 @@ class PropertiesWindow:
             level_type = self.types.get()
             monsters = self.monsters
 
-            #properties_file.write("#Minecraft server properties\n" +
-            print("#Minecraft server properties\n" +
+            properties_file.write("#Minecraft server properties\n" +
             f"#{weekday} {month} {self.my_format(current.day)} {self.my_format(current.hour)}:{self.my_format(current.minute)}:{self.my_format(current.second)} CEST {current.year}\n" +
             f"level-seed={seed}\n"
             f"gamemode={gamemode}\n" +
