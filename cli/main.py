@@ -6,7 +6,7 @@ import datetime
 try:
     from pySmartDL import SmartDL
 except ImportError as e:
-    print("Can't import library " + str(e.name) + ", try \"pip install -r ../gui-requirements.txt\" and retry")
+    print("Can't import library " + str(e.name) + ", try \"pip install pySmartDL\" and retry")
     exit(1)
 
 class CommandLineInterface:
