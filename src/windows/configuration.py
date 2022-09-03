@@ -60,14 +60,14 @@ class ConfigurationWindow:
             self.logger.log("CONFIGURATION", "Creating start file (bat)")
             start_bat.write(
 """@echo off
-java -jar -Xmx""" + str(self.slider.get()*1024) + """M "Serveur Minecraft """ + self.eula_window.download_window.current_version + " " + self.eula_window.download_window.current_version_server + '.jar"' + args + "\npause")
+java -jar -Xmx""" + str(self.slider.get()*1024) + 'M "Serveur Minecraft-' + self.eula_window.download_window.current_version + "-" + self.eula_window.download_window.current_version_server + '.jar"' + args + "\npause")
             start_bat.close()
 
         with open(self.server_path + "start.sh", "w") as start_sh:
             self.logger.log("CONFIGURATION", "Creating start file (shell)")
             start_sh.write(
 """#! /bin/bash
-java -jar -Xmx""" + str(self.slider.get()*1024) + """M "Serveur Minecraft """ + self.eula_window.download_window.current_version + " " + self.eula_window.download_window.current_version_server + '.jar"' + args)
+java -jar -Xmx""" + str(self.slider.get()*1024) + 'M "Serveur-Minecraft-' + self.eula_window.download_window.current_version + "-" + self.eula_window.download_window.current_version_server + '.jar"' + args)
             start_sh.close()
 
             self.info = tkinter.Label(text=self.translations.get_trans("conf.file"), background="#FF8C00", relief=SOLID, font=('Roboto', 14))
