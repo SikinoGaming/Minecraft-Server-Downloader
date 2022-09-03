@@ -16,17 +16,25 @@ class FileManager():
             self.loca = base_path
         else:
             self.loca = base_path + "/"
-        url = self.get_url(self.download_window.current_version_server, self.download_window.current_version)
+        url = self.get_url()
         loca = self.loca + "Serveur Minecraft " + self.mc_version + " " + self.server_version + ".jar"
         self.file = SmartDL(url, loca)
         self.thread = threading.Thread(target=self.download, args=())
         self.thread.start()
 
-    def get_url(self, server_version:str, mc_version:str) -> str:
-        with open("utils/links.json", "r") as file:
-            link = json.loads(file.read())[server_version][mc_version]
-            file.close()
-            return link
+    def get_url(self) -> str:
+        files_in_folder = os.listdir(path=self.loca)
+        if not "links.json" in files_in_folder:
+            print("Links.json not found, downloading it.")
+            SmartDL("https://raw.githubusercontent.com/SikinoGaming/Minecraft-Server-Downloader/Python/links.json", self.loca + "links.json").start()
+        
+        try:
+            with open("links.json", "r") as file:
+                self.link = json.loads(file.read())[self.server_version][self.mc_version]
+                file.close()
+        except KeyError as e:
+            print("There is the problem with your server type or version. Try search (Ctrl + F) in links.json to see if the link is registered.")
+            exit(1)
 
     def download(self):
         files_in_folder = os.listdir(path=self.loca)

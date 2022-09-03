@@ -52,30 +52,15 @@ class EULAWindow:
         # Creating eula.txt file
         with open(self.path + "eula.txt", "w") as eula_file:
             current = datetime.datetime.now()
-            weekday = ""
-            if current.weekday() == 0: weekday = "Mon"
-            elif current.weekday() == 1: weekday = "Tue"
-            elif current.weekday() == 2: weekday = "Wed"
-            elif current.weekday() == 3: weekday = "Thu"
-            elif current.weekday() == 4: weekday = "Fri"
-            elif current.weekday() == 5: weekday = "Sat"
-            elif current.weekday() == 6: weekday = "Sun"
+            days = ["Mon", "Tue", "Wen", "thu", "Fri", "Sat", "Sun"]
+            weekday = days[current.weekday()]
 
-            if current.month == 1: month = "Jan"
-            elif current.month == 2: month = "Feb"
-            elif current.month == 3: month = "Mar"
-            elif current.month == 4: month = "Apr"
-            elif current.month == 5: month = "May"
-            elif current.month == 6: month = "Jun"
-            elif current.month == 7: month = "Jul"
-            elif current.month == 8: month = "Aug"
-            elif current.month == 9: month = "Sep"
-            elif current.month == 10: month = "Oct"
-            elif current.month == 11: month = "Nov"
-            elif current.month == 12: month = "Dec"
+            months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            month = months[current.month]
 
-            eula_file.write("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n" +
-            f"#{weekday} {month} {self.my_format(current.day)} {self.my_format(current.hour)}:{self.my_format(current.minute)}:{self.my_format(current.second)} CEST {current.year}\neula=true")
+            eula_file.write(
+                "#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n" +
+                f"#{weekday} {month} {self.my_format(current.day)} {self.my_format(current.hour)}:{self.my_format(current.minute)}:{self.my_format(current.second)} CEST {current.year}\neula=true")
             eula_file.close()
         
         self.logger.log("EULA", 'eula.txt created')
