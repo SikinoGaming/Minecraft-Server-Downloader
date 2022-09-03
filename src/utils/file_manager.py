@@ -15,23 +15,31 @@ class FileManager():
         if base_path.endswith("/"):
             self.loca = base_path
         else:
-            self.loca = base_path + "/"
+            self.loca = base_path + os.sep
+
+        if not os.path.exists(self.loca):
+            print("Folder don't exist, creating it.")
+            os.mkdir(self.path)
+
+        print(self.loca)
         url = self.get_url()
-        loca = self.loca + "Serveur Minecraft " + self.mc_version + " " + self.server_version + ".jar"
+        loca = self.loca + "Serveur Minecraft-" + self.mc_version + "-" + self.server_version + ".jar"
         self.file = SmartDL(url, loca)
         self.thread = threading.Thread(target=self.download, args=())
         self.thread.start()
 
     def get_url(self) -> str:
         files_in_folder = os.listdir(path=self.loca)
+        print(self.loca + ".." + os.sep + "links.json")
         if not "links.json" in files_in_folder:
             print("Links.json not found, downloading it.")
-            SmartDL("https://raw.githubusercontent.com/SikinoGaming/Minecraft-Server-Downloader/Python/links.json", self.loca + "links.json").start()
+            SmartDL("https://raw.githubusercontent.com/SikinoGaming/Minecraft-Server-Downloader/Python/links.json", self.loca + ".." + os.sep + "links.json").start()
         
         try:
-            with open("links.json", "r") as file:
+            with open(self.loca + ".." + os.sep + "links.json", "r") as file:
                 self.link = json.loads(file.read())[self.server_version][self.mc_version]
                 file.close()
+                return self.link
         except KeyError as e:
             print("There is the problem with your server type or version. Try search (Ctrl + F) in links.json to see if the link is registered.")
             exit(1)

@@ -1,5 +1,6 @@
 import tkinter
 import threading
+import os
 
 from time import sleep
 from tkinter.constants import *
@@ -106,7 +107,7 @@ class DownloadWindow():
         # FLAG
         self.flag_image = Image.open("../assets/flags/" + self.translations.lang + ".png").resize((100,75))
         self.flag_image = ImageTk.PhotoImage(self.flag_image)
-        self.flag = tkinter.Button(self.window, image=self.flag_image, command=self.change_lang, background='#2E2E2E', relief=SOLID, fg="#DADADA", highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA")
+        self.flag = tkinter.Button(self.window, image=self.flag_image, command=self.change_lang, background='#2E2E2E', relief=SOLID, fg="#DADADA", highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.flag['image'] = self.flag_image
         self.flag.place(relx=0.1, rely=0.1, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.flag)
@@ -119,8 +120,8 @@ class DownloadWindow():
             self.variable_server,
             *self.server_versions
         )
-        self.server_version_button.config(background='#2E2E2E', relief=SOLID, fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14))
-        self.server_version_button['menu'].config(background='#2E2E2E', relief=SOLID, fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10))
+        self.server_version_button.config(background='#2E2E2E', relief=SOLID, fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14), cursor="hand2")
+        self.server_version_button['menu'].config(background='#2E2E2E', relief=SOLID, fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10), cursor="hand2")
         self.server_version_button.place(relx=0.5, rely=0.3, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.server_version_button)
 
@@ -134,8 +135,8 @@ class DownloadWindow():
             self.variable_mc,
             *self.minecraft_versions
         )
-        self.minecraft_version_button.config(background='#2E2E2E', relief=SOLID, fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14))
-        self.minecraft_version_button['menu'].config(background='#2E2E2E', relief=SOLID, fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10))
+        self.minecraft_version_button.config(background='#2E2E2E', relief=SOLID, fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14), cursor="hand2")
+        self.minecraft_version_button['menu'].config(background='#2E2E2E', relief=SOLID, fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10), cursor="hand2")
         self.minecraft_version_button.place(relx=0.5, rely=0.4, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.minecraft_version_button)
 
@@ -147,12 +148,12 @@ class DownloadWindow():
         self.widget_list.insert(len(self.widget_list), self.path_name)
 
         self.path_field = tkinter.Entry(background='#2E2E2E', borderwidth=1, relief=SOLID, width=60, fg="#DADADA", highlightbackground="#7A7A7A", font=('Roboto', 12))
-        self.path_field.insert(1, "/home/kali/Documents/Minecraft-Server-Downloader/Python/run")
+        self.path_field.insert(1, os.getcwd()[:-3] + "run")
         self.path_field.place(relx=0.5, rely=0.7, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.path_field)
 
         # LAUNCH DOWNLOAD BUTTON
-        self.start_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("main.download"), relief=SOLID, fg="#DADADA", command=self.init_download, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14))
+        self.start_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("main.download"), relief=SOLID, fg="#DADADA", command=self.init_download, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14), cursor="hand2")
         self.start_button.place(relx=0.5, rely=0.8, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.start_button)
         self.logger.log("DOWNLOAD", "Created widgets of DOWNLOAD window")
@@ -190,7 +191,7 @@ class DownloadWindow():
 
     def create_next_button(self):
         # NEXT BUTTON
-        self.next_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("all.next"), relief=SOLID, fg="#DADADA", command=self.change_eula_window, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14))
+        self.next_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("all.next"), relief=SOLID, fg="#DADADA", command=self.change_eula_window, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14), cursor="hand2")
         self.next_button.place(relx=0.9, rely=0.93, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.next_button)
 

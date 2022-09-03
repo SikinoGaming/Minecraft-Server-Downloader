@@ -26,14 +26,14 @@ class EULAWindow:
         self.widget_list.insert(len(self.widget_list), self.title)
 
         # EULA LINK
-        self.link = tkinter.Label(text=self.translations.get_trans("eula.link"), background="#2E2E2E", fg="#0288d1", font=('Roboto', 14, 'underline'))
+        self.link = tkinter.Label(text=self.translations.get_trans("eula.link"), background="#2E2E2E", fg="#0288d1", font=('Roboto', 14, 'underline'), cursor="hand2")
         self.link.place(relx=0.5, rely=0.4, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.link)
         self.link.bind("<Button-1>", self.callback)
 
         # AGREE CHECKBOX
         self.agree = tkinter.Checkbutton(self.window)
-        self.agree.configure(text=self.translations.get_trans("eula.agree"), command=self.create_eula_file, background="#2E2E2E", fg="#DADADA", font=('Roboto', 12, 'underline'), activebackground="#252525", activeforeground="#DADADA")
+        self.agree.configure(text=self.translations.get_trans("eula.agree"), command=self.create_eula_file, background="#2E2E2E", fg="#DADADA", font=('Roboto', 12, 'underline'), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.agree.place(relx=0.5, rely=0.7, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.agree)
 
@@ -76,7 +76,7 @@ class EULAWindow:
 
     def create_next_button(self):
         # NEXT BUTTON
-        self.next_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("all.next"), relief=SOLID, fg="#DADADA", command=self.change_conf_window, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14))
+        self.next_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("all.next"), relief=SOLID, fg="#DADADA", command=self.change_conf_window, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14), cursor="hand2")
         self.next_button.place(relx=0.9, rely=0.93, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.next_button)
 

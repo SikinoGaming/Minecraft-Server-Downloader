@@ -31,7 +31,7 @@ class PropertiesWindow:
         self.widget_list.insert(len(self.widget_list), self.title)
 
         # CREATE BUTTON
-        self.create_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("prop.create"), relief="solid", fg="#DADADA", command=self.create_file, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 12))
+        self.create_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("prop.create"), relief="solid", fg="#DADADA", command=self.create_file, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 12), cursor="hand2")
         self.create_button.place(relx=0.85, rely=0.1, anchor="center")
         self.widget_list.insert(len(self.widget_list), self.create_button)
 
@@ -57,8 +57,8 @@ class PropertiesWindow:
             self.gamemodes,
             *["survival", "creative", "adventure", "spectator"]
         )
-        self.gamemode_menu.config(background='#2E2E2E', relief="solid", fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 12))
-        self.gamemode_menu['menu'].config(background='#2E2E2E', relief="solid", fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10))
+        self.gamemode_menu.config(background='#2E2E2E', relief="solid", fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 12), cursor="hand2")
+        self.gamemode_menu['menu'].config(background='#2E2E2E', relief="solid", fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10), cursor="hand2")
         self.gamemode_menu.place(relx=0.25, rely=0.25, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.gamemode_menu)
 
@@ -70,26 +70,26 @@ class PropertiesWindow:
             self.difficulties,
             *["peaceful", "easy", "normal", "hard"]
         )
-        self.difficulty_menu.config(background='#2E2E2E', relief="solid", fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 12))
-        self.difficulty_menu['menu'].config(background='#2E2E2E', relief="solid", fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10))
+        self.difficulty_menu.config(background='#2E2E2E', relief="solid", fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 12), cursor="hand2")
+        self.difficulty_menu['menu'].config(background='#2E2E2E', relief="solid", fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10), cursor="hand2")
         self.difficulty_menu.place(relx=0.75, rely=0.25, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.difficulty_menu)
 
         # COMMAND BLOCKS CHECKBOX
         self.cmd_blocks_check = tkinter.Checkbutton(self.window)
-        self.cmd_blocks_check.configure(text=self.translations.get_trans("prop.cmd_blocks"), command=self.switch_cmd_blocks , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), justify="center", activebackground="#252525", activeforeground="#DADADA")
+        self.cmd_blocks_check.configure(text=self.translations.get_trans("prop.cmd_blocks"), command=self.switch_cmd_blocks , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), justify="center", activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.cmd_blocks_check.place(relx=0.25, rely=0.34, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.cmd_blocks_check)
 
         # CRACK CHECKBOX
         self.crack_check = tkinter.Checkbutton(self.window)
-        self.crack_check.configure(text=self.translations.get_trans("prop.crack"), command=self.switch_crack , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA")
+        self.crack_check.configure(text=self.translations.get_trans("prop.crack"), command=self.switch_crack , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.crack_check.place(relx=0.75, rely=0.34, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.crack_check)
 
         # PvP CHECKBOX
         self.pvp_check = tkinter.Checkbutton(self.window)
-        self.pvp_check.configure(text=self.translations.get_trans("prop.pvp"), command=self.switch_pvp , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA", )
+        self.pvp_check.configure(text=self.translations.get_trans("prop.pvp"), command=self.switch_pvp , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.pvp_check.place(relx=0.25, rely=0.42, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.pvp_check)
         self.pvp_check.select()
@@ -97,7 +97,7 @@ class PropertiesWindow:
 
         # STRUCTURES CHECKBOX
         self.structures_check = tkinter.Checkbutton(self.window)
-        self.structures_check.configure(text=self.translations.get_trans("prop.structures"), command=self.switch_strucures , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA")
+        self.structures_check.configure(text=self.translations.get_trans("prop.structures"), command=self.switch_strucures , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.structures_check.place(relx=0.75, rely=0.42, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.structures_check)
         self.structures_check.select()
@@ -123,13 +123,13 @@ class PropertiesWindow:
 
         # FIGHT CHECKBOX
         self.flight_check = tkinter.Checkbutton(self.window)
-        self.flight_check.configure(text=self.translations.get_trans("prop.flight"), command=self.switch_flight , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA")
+        self.flight_check.configure(text=self.translations.get_trans("prop.flight"), command=self.switch_flight , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.flight_check.place(relx=0.25, rely=0.63, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.flight_check)
 
         # NETHER CHECKBOX
         self.nether_check = tkinter.Checkbutton(self.window)
-        self.nether_check.configure(text=self.translations.get_trans("prop.nether"), command=self.switch_nether , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA")
+        self.nether_check.configure(text=self.translations.get_trans("prop.nether"), command=self.switch_nether , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.nether_check.place(relx=0.75, rely=0.63, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.nether_check)
         self.nether_check.select()
@@ -137,19 +137,19 @@ class PropertiesWindow:
 
         # HARDCORE CHECKBOX
         self.hardcore_check = tkinter.Checkbutton(self.window)
-        self.hardcore_check.configure(text=self.translations.get_trans("prop.hardcore"), command=self.switch_hardcore , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA")
+        self.hardcore_check.configure(text=self.translations.get_trans("prop.hardcore"), command=self.switch_hardcore , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.hardcore_check.place(relx=0.25, rely=0.70, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.hardcore_check)
 
         # WHITELIST CHECKBOX
         self.whitelist_check = tkinter.Checkbutton(self.window)
-        self.whitelist_check.configure(text=self.translations.get_trans("prop.whitelist"), command=self.switch_whitelist , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA")
+        self.whitelist_check.configure(text=self.translations.get_trans("prop.whitelist"), command=self.switch_whitelist , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.whitelist_check.place(relx=0.75, rely=0.70, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.whitelist_check)
 
         # MONSTERS CHECKBOX
         self.monsters_check = tkinter.Checkbutton(self.window)
-        self.monsters_check.configure(text=self.translations.get_trans("prop.monsters"), command=self.switch_monsters , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA")
+        self.monsters_check.configure(text=self.translations.get_trans("prop.monsters"), command=self.switch_monsters , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.monsters_check.place(relx=0.25, rely=0.77, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.monsters_check)
         self.monsters_check.select()
@@ -163,8 +163,8 @@ class PropertiesWindow:
             self.types,
             *["normal", "large_biomes", "flat", "amplified"]
         )
-        self.types_menu.config(background='#2E2E2E', relief="solid", fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 12))
-        self.types_menu['menu'].config(background='#2E2E2E', relief="solid", fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10))
+        self.types_menu.config(background='#2E2E2E', relief="solid", fg="#DADADA", highlightbackground="#7A7A7A", highlightthickness=1, activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 12), cursor="hand2")
+        self.types_menu['menu'].config(background='#2E2E2E', relief="solid", fg="#DADADA", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 10), cursor="hand2")
         self.types_menu.place(relx=0.75, rely=0.77, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.types_menu)
 

@@ -30,18 +30,18 @@ class ConfigurationWindow:
         self.widget_list.insert(len(self.widget_list), self.memory)
 
         # MEMORY SLIDER
-        self.slider = tkinter.Scale(self.window, from_=1, to=str(int(psutil.virtual_memory().total) / (1024 * 1024 * 1024))[:1], orient=HORIZONTAL, background='#2E2E2E', relief=SOLID, fg="#DADADA", highlightbackground="#7A7A7A", activebackground="#252525", font=('Roboto', 14))
+        self.slider = tkinter.Scale(self.window, from_=1, to=round(int(psutil.virtual_memory().total) / (1024 * 1024 * 1024))-1, orient=HORIZONTAL, background='#2E2E2E', relief=SOLID, fg="#DADADA", highlightbackground="#7A7A7A", activebackground="#252525", font=('Roboto', 14), cursor="hand2")
         self.slider.place(relx=0.5, rely=0.5, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.slider)
 
         # NOGUI CHECKBOX
         self.nogui = tkinter.Checkbutton(self.window)
-        self.nogui.configure(text=self.translations.get_trans("conf.nogui"), command=self.switch_nogui , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12, 'underline'), activebackground="#252525", activeforeground="#DADADA")
+        self.nogui.configure(text=self.translations.get_trans("conf.nogui"), command=self.switch_nogui , background="#2E2E2E", fg="#DADADA", font=('Roboto', 12, 'underline'), activebackground="#252525", activeforeground="#DADADA", cursor="hand2")
         self.nogui.place(relx=0.5, rely=0.7, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.nogui)
 
         # CREATE server.properties
-        self.apply_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("conf.create"), relief=SOLID, fg="#DADADA", command=self.create_files, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14))
+        self.apply_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("conf.create"), relief=SOLID, fg="#DADADA", command=self.create_files, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14), cursor="hand2")
         self.apply_button.place(relx=0.5, rely=0.93, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.apply_button)
 
@@ -84,7 +84,7 @@ java -jar -Xmx""" + str(self.slider.get()*1024) + """M "Serveur Minecraft """ + 
 
     def create_next_button(self):
         # NEXT BUTTON
-        self.next_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("all.next"), relief=SOLID, fg="#DADADA", command=self.change_properties_window, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14))
+        self.next_button = tkinter.Button(background='#2E2E2E', text=self.translations.get_trans("all.next"), relief=SOLID, fg="#DADADA", command=self.change_properties_window, highlightbackground="#7A7A7A", activebackground="#252525", activeforeground="#DADADA", font=('Roboto', 14), cursor="hand2")
         self.next_button.place(relx=0.9, rely=0.93, anchor=CENTER)
         self.widget_list.insert(len(self.widget_list), self.next_button)
 
