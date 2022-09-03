@@ -1,7 +1,7 @@
 import argparse
 import os
 import json
-import datetime
+from datetime import datetime
 
 try:
     from pySmartDL import SmartDL
@@ -32,6 +32,11 @@ class CommandLineInterface:
         else:
             self.loca = args.path + "/"
 
+        files_in_folder = os.listdir(path=self.loca)
+        if not "links.json" in files_in_folder:
+            print("Links.json not found, downloading it.")
+            SmartDL("https://raw.githubusercontent.com/SikinoGaming/Minecraft-Server-Downloader/Python/links.json", self.loca + "links.json").start(True)
+        
         try:
             with open("links.json", "r") as file:
                 self.link = json.loads(file.read())[self.server_version][self.mc_version]
@@ -44,6 +49,7 @@ class CommandLineInterface:
 
         files_in_folder = os.listdir(path=self.loca)
         if not "server.properties" in files_in_folder:
+            print("Downloading server file.")
             self.file.start(True)
         else:
             print("There is a server in this folder, empty or change it.")
@@ -57,32 +63,25 @@ class CommandLineInterface:
                     break
 
         with open(self.loca + "eula.txt", "w") as eula_file:
-            current = datetime.datetime.now()
-            weekday = ""
-            if current.weekday() == 0: weekday = "Mon"
-            elif current.weekday() == 1: weekday = "Tue"
-            elif current.weekday() == 2: weekday = "Wen"
-            elif current.weekday() == 3: weekday = "Thu"
-            elif current.weekday() == 4: weekday = "Fri"
-            elif current.weekday() == 5: weekday = "Sat"
-            elif current.weekday() == 6: weekday = "Sun"
+            current = datetime.now()
 
-            if current.month == 1: month = "Jan"
-            elif current.month == 2: month = "Feb"
-            elif current.month == 3: month = "Mar"
-            elif current.month == 4: month = "Apr"
-            elif current.month == 5: month = "May"
-            elif current.month == 6: month = "Jun"
-            elif current.month == 7: month = "Jul"
-            elif current.month == 8: month = "Aug"
-            elif current.month == 9: month = "Sep"
-            elif current.month == 10: month = "Oct"
-            elif current.month == 11: month = "Nov"
-            elif current.month == 12: month = "Dec"
+            days = ["Mon", "Tue", "Wen", "thu", "Fri", "Sat", "Sun"]
+            weekday = days[current.weekday()]
 
-            eula_file.write("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n#" +
-            weekday+ " " + month + " " + str(current.day) + " " + str(current.hour) + ":" + str(current.minute) + ":" + str(current.second) +" CEST "+ str(current.year) + "\neula=true")
+            months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            month = months[current.month]
+
+            eula_file.write(
+                "#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n" +
+                f"#{weekday} {month} {self.my_format(current.day)} {self.my_format(current.hour)}:{self.my_format(current.minute)}:{self.my_format(current.second)} CEST {current.year}\neula=true")
             eula_file.close()
+
+    def my_format(self, txt, *args) -> str:
+        txt = str(txt)
+        if len(txt) == 1:
+            return "0" + txt
+        else:
+            return txt
 
 
 if __name__ == "__main__":
