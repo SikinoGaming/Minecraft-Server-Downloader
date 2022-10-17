@@ -14,7 +14,6 @@ class EULAWindow:
         self.translations = self.download_window.translations
         self.widget_list = []
         self.load()
-        self.create_next_button()
         self.path = self.download_window.path_field.get()
         if not self.path.endswith("/"):
             self.path += "/"

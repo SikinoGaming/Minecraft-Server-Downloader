@@ -16,7 +16,6 @@ class ConfigurationWindow:
         self.widget_list = []
         self.nogui_accepted = False
         self.load()
-        self.create_next_button()
 
     def load(self):
         # TITLE
@@ -73,6 +72,8 @@ java -jar -Xmx""" + str(self.slider.get()*1024) + 'M "Serveur-Minecraft-' + self
             self.info = tkinter.Label(text=self.translations.get_trans("conf.file"), background="#FF8C00", relief=SOLID, font=('Roboto', 14))
             self.info.place(relx=0.5, rely=0.85, anchor=CENTER)
             self.widget_list.insert(len(self.widget_list), self.info)
+
+            self.create_next_button()
 
     def unload_window(self):
         i=0

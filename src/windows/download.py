@@ -94,7 +94,6 @@ class DownloadWindow():
         self.current_version_server = "0"
 
         self.load()
-        self.create_next_button()
 
     def load(self):
         self.logger.log("DOWNLOAD", "Creating DOWNLOAD window widgets")

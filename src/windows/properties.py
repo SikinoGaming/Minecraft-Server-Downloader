@@ -157,7 +157,7 @@ class PropertiesWindow:
 
         # LEVEL TYPES MENU
         self.types = tkinter.StringVar(self.window)
-        self.types.set(self.translations.get_trans("prop.choose_difficulty"))
+        self.types.set(self.translations.get_trans("prop.choose_world_type"))
         self.types_menu = tkinter.OptionMenu(
             self.window,
             self.types,
@@ -172,12 +172,14 @@ class PropertiesWindow:
         self.ressource_pack = tkinter.Text(background='#2E2E2E', borderwidth=1, relief="solid", width=60, height=1, fg="#DADADA", highlightbackground="#7A7A7A", font=('Roboto', 12))
         self.ressource_pack.place(relx=0.5, rely=0.84, anchor="n")
         self.ressource_pack.insert("end", self.translations.get_trans("prop.ressource_pack"))
+        self.ressource_pack.bind("<FocusIn>", self.clear_ressource_pack_text)
         self.widget_list.insert(len(self.widget_list), self.ressource_pack)
 
         # Message Of The Day
         self.motd = tkinter.Text(background='#2E2E2E', borderwidth=1, relief="solid", width=60, height=2, fg="#DADADA", highlightbackground="#7A7A7A", font=('Roboto', 12))
         self.motd.place(relx=0.5, rely=0.9, anchor="n")
         self.motd.insert("end", self.translations.get_trans("prop.motd"))
+        self.motd.bind("<FocusIn>", self.clear_motd_text)
         self.widget_list.insert(len(self.widget_list), self.motd)
 
     def clear_seed_text(self, *args):
@@ -185,6 +187,12 @@ class PropertiesWindow:
     
     def clear_world_text(self, *args):
         self.world_field.delete(0,tkinter.END)
+
+    def clear_ressource_pack_text(self, *args):
+        self.ressource_pack.delete('1.0', tkinter.END)
+    
+    def clear_motd_text(self, *args):
+        self.motd.delete('1.0', tkinter.END)
 
     def switch_cmd_blocks(self):
         if self.cmd_blocks == "true":
@@ -319,6 +327,8 @@ class PropertiesWindow:
             f"level-type={level_type}\n" +
             f"spawn-monsters={monsters}\n")
             properties_file.close()
+
+            exit(0)
 
     def my_format(self, txt, *args) -> str:
         txt = str(txt)
