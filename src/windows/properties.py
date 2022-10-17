@@ -108,7 +108,7 @@ class PropertiesWindow:
         self.players_text.place(relx=0.25, rely=0.49, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.players_text)
         # Max Player SpinBox
-        self.player_spinbox = tkinter.Spinbox(self.window, from_=0, to=6969, textvariable=self.max_players)
+        self.player_spinbox = tkinter.Spinbox(self.window, from_=1, to=6969, textvariable=self.max_players)
         self.player_spinbox.configure(background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525")
         self.player_spinbox.place(relx=0.25, rely=0.54, anchor="n")
 
@@ -117,7 +117,7 @@ class PropertiesWindow:
         self.render_distance_text.place(relx=0.75, rely=0.49, anchor="n")
         self.widget_list.insert(len(self.widget_list), self.render_distance_text)
         # Render Distance SpinBox
-        self.render_distances_pinbox = tkinter.Spinbox(self.window, from_=0, to=32, textvariable=self.render_distance)
+        self.render_distances_pinbox = tkinter.Spinbox(self.window, from_=2, to=32, textvariable=self.render_distance)
         self.render_distances_pinbox.configure(background="#2E2E2E", fg="#DADADA", font=('Roboto', 12), activebackground="#252525")
         self.render_distances_pinbox.place(relx=0.75, rely=0.54, anchor="n")
 
