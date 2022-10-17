@@ -20,9 +20,9 @@ class DownloadWindow():
         self.widget_list = []
         self.window = window
         self.window.title(self.translations.get_trans("all.name"))
-        self.window.geometry("640x480")
-        self.window.minsize(640, 480)
-        self.window.maxsize(1440, 1080)
+        self.window.geometry("720x480")
+        self.window.minsize(720, 480)
+        self.window.maxsize(1620, 1080)
         #self.window.iconbitmap("../assets/server.ico")
         self.bg = Image.open("../assets/background.png").resize((640, 480))
         self.bg_copy= self.bg.copy()
@@ -187,7 +187,6 @@ class DownloadWindow():
             self.file_manager = FileManager(self)
             self.track_thread = threading.Thread(target=self.track_download, args=())
             self.track_thread.start()
-            self.create_next_button()
 
     def create_next_button(self):
         # NEXT BUTTON
@@ -228,6 +227,7 @@ class DownloadWindow():
             self.error.configure(text=str(self.sizeof_human(file.get_dl_size())) + "/" + str(self.sizeof_human(file.get_final_filesize())) + " (" + str(file.get_progress() * 100)[:5] + "%) @ " + str(self.sizeof_human(round(file.get_speed(), 2))) + "/s, " + str(self.time_human(file.get_dl_time())))
             sleep(0.5)
         self.error.configure(text="Download Finished")
+        self.create_next_button()
 
     def resize_bg(self, e):
         if e.widget == self.window:
